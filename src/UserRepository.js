@@ -1,4 +1,5 @@
-const userData = require('./data/users');
+// const userData = require('../data/users').userData;
+// const userData = userInfo.userData;
 
 class UserRepository {
   constructor(userData) {
@@ -6,14 +7,14 @@ class UserRepository {
   }
 
   returnUserData(id) {
-    return this.userData.find(element => id === element.id)
+    return this.userData.find(element => id === element.id);
   };
 
   calculateTotalAverageStepGoal() {
     let avgStepGoal = this.userData.reduce((accu, cv) => {
-      return Math.round((accu + cv.dailyStepGoal) / this.userData.length)
+      return accu + cv.dailyStepGoal;
     }, 0);
-    return avgStepGoal;
+    return Math.round(avgStepGoal / this.userData.length);
   };
 }
 
