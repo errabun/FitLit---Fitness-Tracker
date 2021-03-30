@@ -1,0 +1,56 @@
+* {
+  border: 1px solid red;
+}
+
+body {
+    background: green;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+header {
+  display: flex;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.trackers {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 800px;
+  width: 800px;
+}
+
+.activity {
+  height: 325px;
+  width:  325px;
+  margin: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    background: magenta;
+  }
+}
+
+/* @media only screen
+    and (device-width: 200px)
+    and (device-height: 200px)
+    and (-webkit-device-pixel-ratio: 3) {
+    body {
+      background: teal;
+    }
+    } */
