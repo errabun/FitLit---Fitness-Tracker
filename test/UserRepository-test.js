@@ -1,8 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-// const userInfo = require('../data/users');
-// const userData = userInfo.userData;
 const UserRepository = require('../src/UserRepository');
 
 describe('UserRepository', function() {
@@ -133,5 +131,5 @@ describe('UserRepository', function() {
   it('should calculate the average step goal of all users', function() {
 
     expect(userRepository.calculateTotalAverageStepGoal()).to.equal(6667);
-  }); 
+  });
 })
