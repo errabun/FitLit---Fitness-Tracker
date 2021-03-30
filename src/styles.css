@@ -1,49 +1,73 @@
 * {
   border: 1px solid red;
 }
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
 
 body {
     background: green;
+}
+
+header {
+  display: flex;
+  height: 20vh;
+  width: 90vw;
 }
 
 main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-header {
-  display: flex;
+  height: 95vh;
+  width: 90vw;
 }
 
 .friends {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: 60vh;
+  width:  20vh;
 }
 
 .trackers {
   display: flex;
   flex-direction: column;
+  height: 80vh;
+  width:  80vw;
+}
+
+.badge {
+  height: 10vh;
+  width: 70vw;
 }
 
 .activity-container {
   display: flex;
   flex-wrap: wrap;
-  height: 800px;
-  width: 800px;
+  height: 80vh;
+  width: 70vw;
 }
 
 .activity {
-  height: 325px;
-  width:  325px;
+  height: 30vh;
+  width: 30vw;
   margin: 15px;
 }
 
 @media screen and (max-width: 1000px) {
   body {
-    background: magenta;
+    background: blue;
   }
+
+  .activity {
+    height: 22vh;
+    width: 25vw;
+  }
+
 }
 
 /* @media only screen
