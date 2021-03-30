@@ -9,10 +9,17 @@ body {
 main {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 header {
   display: flex;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .trackers {
