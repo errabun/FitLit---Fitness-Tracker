@@ -12,7 +12,15 @@ class Hydration {
     return totalAvg;
   }
 
-
+  fluidOzsDrankDay(id, date) {
+    let findUser = hydrationData.filter(user => {
+      return user.userID === id;
+    })
+    let ozsDayDrank = findUser.find(user => {
+      return user.date === date
+    })
+    return ozsDayDrank.numOunces;
+  }
 
 }
 
