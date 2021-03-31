@@ -1,10 +1,10 @@
 class HydrationRepository {
   constructor(hydrationData) {
-    this.userHydration = hydrationData;
+    this.hydrationData = hydrationData;
   }
 
-  returnUserData(id) {
-    return this.userHydration.find(element => id === element.id);
+  returnUserHydration(id) {
+    return this.hydrationData.filter(element => id === element.id);
   };
 }
 
