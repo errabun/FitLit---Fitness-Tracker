@@ -1,5 +1,4 @@
 // const userData = require('../data/users').userData;
-// const userData = userInfo.userData;
 
 class UserRepository {
   constructor(userData) {
@@ -18,4 +17,6 @@ class UserRepository {
   };
 }
 
-module.exports = UserRepository;
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}
