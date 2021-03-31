@@ -22,6 +22,14 @@ class Hydration {
     return ozsDayDrank.numOunces;
   }
 
+  fluidOzsDrankWeek(id, dateStart, dateEnd) {
+    let findUserData = hydrationData.filter(user => {
+      return user.userID === id;
+    })
+    return findUserData.filter(user => {
+      return user.date >= dateStart && user.date <= dateEnd;
+    })
+  }
 }
 
 if (typeof module !== 'undefined') {
