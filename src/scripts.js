@@ -1,5 +1,4 @@
 const userInfo = new UserRepository(userData)
-let hydrationInfo = new HydrationRepository(hydrationData);
 // console.log(userInfo);
 let firstUser = new User(userInfo.returnUserData(3));
 
@@ -38,14 +37,16 @@ function displayStepGoal() {
 }
 
 function displayHydrationData() {
-const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
-let barChart = new Chart(chart, {
+  let hydrationInfo = new HydrationRepository(hydrationData);
+  const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
+  const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
+  let barChart = new Chart(chart, {
     type: 'bar',
     data: {
         labels: weeklyHydrationDays,
         datasets: [{
             label: 'Number of Ounces',
-            data: [12, 19, 3, 5, 2, 3],
+            data: weeklyHydrationOunces,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

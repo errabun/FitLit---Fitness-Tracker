@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-
+ 
 const HydrationRepository = require('../src/HydrationRepository');
 const Hydration = require('../src/Hydration');
 
@@ -2574,5 +2574,5 @@ describe('Hydration', function() {
       '2019/06/23': 62
       });
   });
-  
+
 })

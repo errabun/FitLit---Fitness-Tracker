@@ -35,6 +35,8 @@ class HydrationRepository {
   }
 }
 
+const newH = new HydrationRepository(hydrationData);
+console.log(newH); 
 if (typeof module !== 'undefined') {
   module.exports = HydrationRepository;
 }
