@@ -8,27 +8,30 @@ class HydrationRepository {
   };
 
   totalAvgFluidPerDay(id) {
-    let ozsPerDay = this.returnUserHydration(id);
-    let totalAvg = ozsPerDay.reduce((total, user) => {
+    const ozsPerDay = this.returnUserHydration(id);
+    const totalAvg = ozsPerDay.reduce((total, user) => {
       return total + user.numOunces;
     }, 0)
     return Math.round(totalAvg / ozsPerDay.length);
   };
 
   fluidOzsDrankDay(id, date) {
-    let findUser = this.returnUserHydration(id);
-    let ozsDayDrank = findUser.find(user => {
+    const findUser = this.returnUserHydration(id);
+    const ozsDayDrank = findUser.find(user => {
       return user.date === this.date
     });
     return ozsDayDrank.numOunces;
   };
 
-  fluidOzsDrankWeek(id, dateStart, dateEnd) {
-    let findUserData = this.returnUserHydration(id);
-    let weekOzDrank = findUserData.filter(user => {
-      return user.date >= dateStart && user.date <= dateEnd;
-    })
-    return weekOzDrank; 
+  fluidOzsDrankWeek(id, date) {
+    const findUserData = this.returnUserHydration(id);
+    const userHydrationDates = findUserData.map(user => user.date);
+    const getDateIndex = userHydrationDates.indexOf(date);
+    const hydrationUserDate = findUserData.slice(getDateIndex, getDateIndex + 7);
+    return hydrationUserDate.reduce((obj, hydration) => {
+      obj[hydration.date] = hydration.numOunces;
+      return obj;
+    }, {})
   }
 }
 
