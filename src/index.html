@@ -20,7 +20,9 @@
             <p id="averageStepGoal"></p>
           </section>
           <section class="activity">activity data</section>
-          <section class="activity">hydration data</section>
+          <section class="activity">
+            <canvas id="myChart" width="400" height="400"></canvas>
+          </section>
           <section class="activity">sleep data</section>
         </div>
       </section>
@@ -44,10 +46,12 @@
         </article>
       </aside>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="../src/UserRepository.js"></script>
     <script type="text/javascript" src="../src/User.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/HydrationRepository.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
