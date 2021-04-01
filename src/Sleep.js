@@ -36,4 +36,14 @@ class Sleep {
       return obj;
     }, {})
   }
+
+  showSleepQualityByWeek(id, date) {
+    const userQualityDates = this.userSleepData.map(user => user.date);
+    const getDateIndex = userQualityDates.indexOf(date);
+    const qualityUserDate = this.userSleepData.slice(getDateIndex, getDateIndex + 7);
+    return this.userSleepData.reduce((obj, sleep) => {
+      obj[sleep.date] = sleep.sleepQuality;
+      return obj;
+    }, {})
+  }
 }
