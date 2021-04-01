@@ -18,7 +18,7 @@ class HydrationRepository {
   fluidOzsDrankDay(id, date) {
     const findUser = this.returnUserHydration(id);
     const ozsDayDrank = findUser.find(user => {
-      return user.date === this.date
+      return user.date === date;
     });
     return ozsDayDrank.numOunces;
   };
