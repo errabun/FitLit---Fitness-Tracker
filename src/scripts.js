@@ -7,6 +7,7 @@ const friends = document.querySelectorAll('.friend');
 const userStep = document.querySelector('#userStepGoal');
 const averageStep = document.querySelector('#averageStepGoal');
 const chart = document.getElementById('myChart');
+const date = document.querySelector('#date');
 
 window.addEventListener('load', generateFirstUser);
 
@@ -83,5 +84,9 @@ function displayHydrationData() {
         }
     }
 });
+}
 
+function dateTest() {
+  let test = dayjs(date.value).format('YYYY-MM-DD')
+  console.log(test);
 }
