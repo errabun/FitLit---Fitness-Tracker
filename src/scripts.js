@@ -1,12 +1,16 @@
 const userInfo = new UserRepository(userData)
-// console.log(userInfo);
 let firstUser = new User(userInfo.returnUserData(3));
+
+const userSleepData = new SleepRepository(sleepData);
+let sleepUser1 = new Sleep(userInfo.returnUserData(3), userSleepData);
 
 const greeting = document.querySelector('#greeting');
 const friends = document.querySelectorAll('.friend');
 const userStep = document.querySelector('#userStepGoal');
 const averageStep = document.querySelector('#averageStepGoal');
 const chart = document.getElementById('myChart');
+const hoursSleptDay = document.getElementById('hoursSlept');
+const sleepQualityDay = document.getElementById('sleepQuality');
 
 window.addEventListener('load', generateFirstUser);
 
@@ -83,5 +87,10 @@ function displayHydrationData() {
         }
     }
 });
+
+function displaySleepData() {
+  hoursSleptDay.innerText = sleepUser1.showHoursSleptByDate();
+
+}
 
 }

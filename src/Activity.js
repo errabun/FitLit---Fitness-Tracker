@@ -64,6 +64,13 @@ class Activity {
     }, {});
   };
 
+  avgStairsClimbedDate(date) {
+    let allUserDataDate = returnStepDataDate(date);
+    const userStairsClimbed = allUserDataDate.map(user => user.flightsOfStairs);
+    const findMostStairs = Math.max(...userStairsClimbed);
+    return allUserDataDate.filter(user => user.flightsOfStairs === findMostStairs)
+  };
+
   findAvgStatOnDate(date, stat) {
     const allUserDataDate = returnStepDataDate(date);
     return allUserDataDate.reduce((total, user) => {
