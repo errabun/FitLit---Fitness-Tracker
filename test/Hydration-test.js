@@ -1,10 +1,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const Hydration = require('../src/Hydration');
 const HydrationRepository = require('../src/HydrationRepository');
 
 describe('HydrationRepository', function() {
-  let hydrationInfo, hydrationData;
+  let user1, hydrationData, userHydrationData
 
   beforeEach(function() {
     hydrationData = [
@@ -2510,66 +2511,24 @@ describe('HydrationRepository', function() {
       }
     ];
 
-    hydrationInfo = new HydrationRepository(hydrationData);
+    userHydrationData = new HydrationRepository(hydrationData);
+    // console.log(userHydrationData.returnUserHydration(5));
+    user1 = new Hydration(userHydrationData.returnUserHydration(5));
+    console.log(user1); 
   })
 
   it('should be a function', function() {
 
-    expect(HydrationRepository).to.be.a('function');
+    expect(Hydration).to.be.a('function');
   });
 
   it('should be an instance of UserRespository', function() {
 
-    expect(hydrationInfo).to.be.an.instanceOf(HydrationRepository);
+    expect(user1).to.be.an.instanceOf(Hydration);
   });
 
-  it('should be an instance of UserRespository', function() {
-
-    expect(hydrationInfo).to.be.an.instanceOf(HydrationRepository);
-  });
-
-  it('should be able to store some hydration data', function() {
-
-    expect(hydrationInfo.hydrationData).to.equal(hydrationData);
-  });
-
-  it('should be able to return a users hydration history', function() {
-
-    expect(hydrationInfo.returnUserHydration(4)).to.deep.equal([
-    { userID: 4, date: '2019/06/15', numOunces: 85 },
-    { userID: 4, date: '2019/06/16', numOunces: 95 },
-    { userID: 4, date: '2019/06/17', numOunces: 82 },
-    { userID: 4, date: '2019/06/18', numOunces: 93 },
-    { userID: 4, date: '2019/06/19', numOunces: 21 },
-    { userID: 4, date: '2019/06/20', numOunces: 95 },
-    { userID: 4, date: '2019/06/21', numOunces: 91 },
-    { userID: 4, date: '2019/06/22', numOunces: 34 },
-    { userID: 4, date: '2019/06/23', numOunces: 62 },
-    { userID: 4, date: '2019/06/24', numOunces: 66 }
-    ])
-  });
-
-  it('should  be able to return a users average fluid intake', function() {
-
-    expect(hydrationInfo.totalAvgFluidPerDay(4)).to.equal(72);
-  });
-
-  it('should be able to return how much fluid user drank by date', function() {
-
-    expect(hydrationInfo.fluidOzsDrankDay(4, '2019/06/20')).to.equal(95);
-  });
-
-  it('should be able to return the number of ounces of fluid a user drank over the course of a week specified by starting date', function() {
-
-    expect(hydrationInfo.fluidOzsDrankWeek(4, '2019/06/17')).to.deep.equal({
-      '2019/06/17': 82,
-      '2019/06/18': 93,
-      '2019/06/19': 21,
-      '2019/06/20': 95,
-      '2019/06/21': 91,
-      '2019/06/22': 34,
-      '2019/06/23': 62
-      });
-  });
-
+  it('should be able to store the users id', function() {
+    // console.log(user1);
+    expect(user1.id).to.equal(5);
+  })
 })
