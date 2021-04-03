@@ -32,6 +32,13 @@ function displayFriends() {
   friends[3].innerText = arrayOfFriends[3];
 };
 
+function getQualitySleepersOver3(date) {
+  userRepo.userData.forEach(element => {
+    sleepRepo.createSleepQualityData(date, element.id)
+  });
+  return sleepRepo.getQualitySleepers()
+};
+
 function displayStepGoal() {
   userStep.innerText = `Your Daily Step Goal: ${firstUser.dailyStepGoal}`;
   averageStep.innerText = `Average Step Goal for all Users: ${userInfo.calculateTotalAverageStepGoal()}`;
