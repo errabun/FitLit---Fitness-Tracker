@@ -33,4 +33,12 @@ class SleepRepository {
   getQualitySleepers() {
     return sleepQualityForUsers.filter(user => user.averageQuality > 3);
   }
+
+  findHeavySleepers(date) {
+    let sleepHoursUser = this.sleepData.filter(user => user.date === date)
+    const sleepHours = sleepHoursUser.map(user => user.hoursSlept);
+    const sleepNum = Math.max(...sleepHours);
+    const heavySleepers = sleepHoursUser.filter(user => user.hoursSlept === sleepNum);
+    return heavySleepers
+  }
 }
