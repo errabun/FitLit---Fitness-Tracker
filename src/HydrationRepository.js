@@ -27,7 +27,7 @@ class HydrationRepository {
     const findUserData = this.returnUserHydration(id);
     const userHydrationDates = findUserData.map(user => user.date);
     const getDateIndex = userHydrationDates.indexOf(date);
-    const hydrationUserWeek = findUserData.slice(getDateIndex, getDateIndex + 7);
+    const hydrationUserWeek = findUserData.slice(getDateIndex - 6, getDateIndex + 1);
     return hydrationUserWeek.reduce((obj, hydration) => {
       obj[hydration.date] = hydration.numOunces;
       return obj;

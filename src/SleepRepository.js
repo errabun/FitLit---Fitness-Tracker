@@ -19,7 +19,7 @@ class SleepRepository {
     const singleUser = this.sleepData.filter(user => user.userID === id);
     const userQualityDates = singleUser.map(user => user.date);
     const getDateIndex = userQualityDates.indexOf(date);
-    const userWeekData = singleUser.slice(getDateIndex, getDateIndex + 7);
+    const userWeekData = singleUser.slice(getDateIndex - 6, getDateIndex + 1);
     const totalQuality = userWeekData.reduce((sum, num) => {
       sum += num.sleepQuality
       return sum
