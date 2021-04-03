@@ -26,3 +26,10 @@ function displayFriends() {
   friends[2].innerText = arrayOfFriends[2];
   friends[3].innerText = arrayOfFriends[3];
 };
+
+function getQualitySleepersOver3(date) {
+  userRepo.userData.forEach(element => {
+    sleepRepo.createSleepQualityData(date, element.id)
+  });
+  return sleepRepo.getQualitySleepers()
+};

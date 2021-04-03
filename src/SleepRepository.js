@@ -1,3 +1,5 @@
+const sleepQualityForUsers = [];
+
 class SleepRepository {
   constructor(sleepData) {
     this.sleepData = sleepData;
