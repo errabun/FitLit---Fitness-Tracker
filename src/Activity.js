@@ -3,35 +3,65 @@ class Activity {
     this.allStepData = activityData
   }
 
-  returnUserStepDataId (id) {
+  userStepDataId (id) {
     return this.allStepData.filter(user =>  user.userID === id);
   };
 
-  returnUserStepDataDate(date) {
+  allStepDataDate(date) {
     return this.allStepData.filter(user => user.date === date);
   };
 
-  getActivityByDateAndId(id, date) {
-    const userActivity = this.returnUserStepDataId(id);
-    return userActivity.find(day => day.date === date);
+  userActivityWeek(id, date) {
+    const userStepData = this.returnUserStepDataId(id);
+    const mapDates = userStepData.map(user => user.date);
+    const getDateIndex = mapDates.indexOf(date);
+    const weekDates = mapDates.splice(getDateIndex, getDateIndex + 7);
+    let activityWeek = [];
+    userStepData.forEach(activity => {
+      if (weekDates.includes(activity.date)) {
+        activityWeek.push(activity);
+      }
+    })
+    return activityWeek;
+  };
+
+  avgActiveMinsWeek(id, date) {
+    const userWeekData = this.`userActivityWeek(id, date);
+    const activeMinutes = userWeekData.reduce((total, currentDay) => {
+      total += currentDay.minutesActive;
+      return total;
+    }, 0)
+    return Math.round(activeMinutes / 7);
   }
 
-  returnMilesWalked(date, user) {
-    // will need to calculate with user stride length..need to get from users.js
-    // numSteps * strideLength = totalDistance for day
-    // totalDistance / 5280 => miles walked that day
+  getActivityByDateAndId(id, date) {
+    const userActivity = this.userStepDataId(id);
+    return userActivity.find(day => day.date === date);
+  };
+
+  milesWalkedDay(user, date) {
+    const userStepData = this.getActivityByDateAndId(user.id, date);
+    const totalDistanceDay = user.strideLength * userStepData.numSteps;
+    return Math.round(100 * (totalDistanceDay / 5280)) / 100;
   };
 
   activeMinsDay(id, date) {
-    const userStepData = this.returnUserStepData(id);
+    const userStepData = this.userStepDataId(id);
     const findUserDate = userStepData.find(user => user.date === date);
     return findUserDate.minutesActive;
   };
 
+  achievedStepGoal(user, date) {
+    const userStepData = this.getActivityByDateAndId(user.id, date);
+    return userStepData.numSteps > user.dailyStepGoal;
+  }
 
 
 }
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;
+}
+const returnGoodSleepers = i.filter( user => {
+  return user.sleepQuality > 3;
 }
