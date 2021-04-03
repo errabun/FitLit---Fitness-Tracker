@@ -9,10 +9,12 @@ const friends = document.querySelectorAll('.friend');
 const userStep = document.querySelector('#userStepGoal');
 const averageStep = document.querySelector('#averageStepGoal');
 const chart = document.getElementById('myChart');
-const hoursSleptDay = document.getElementById('hoursSlept');
-const sleepQualityDay = document.getElementById('sleepQuality');
+
+const date = document.querySelector('#date');
+const dayDrink = document.querySelector('#dayDrink');
 
 window.addEventListener('load', generateFirstUser);
+date.addEventListener('input', displayHydrationData)
 
 function generateFirstUser() {
   // const firstUser = new User(userInfo.returnUserData(3));
@@ -49,8 +51,9 @@ function displayStepGoal() {
 
 function displayHydrationData() {
   let hydrationInfo = new HydrationRepository(hydrationData);
-  const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
-  const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
+  dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
+  const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
+  const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   let barChart = new Chart(chart, {
     type: 'bar',
     data: {
@@ -87,10 +90,9 @@ function displayHydrationData() {
         }
     }
 });
-
-function displaySleepData() {
-  hoursSleptDay.innerText = sleepUser1.showHoursSleptByDate();
-
 }
 
+function returnUserSelectedDate() {
+  let test = dayjs(date.value).format('YYYY/MM/DD')
+  return test
 }
