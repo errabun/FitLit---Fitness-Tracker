@@ -10,6 +10,7 @@ const chart = document.getElementById('myChart');
 const date = document.querySelector('#date');
 
 window.addEventListener('load', generateFirstUser);
+date.addEventListener('input', displayHydrationData)
 
 function generateFirstUser() {
   // const firstUser = new User(userInfo.returnUserData(3));
@@ -46,8 +47,8 @@ function displayStepGoal() {
 
 function displayHydrationData() {
   let hydrationInfo = new HydrationRepository(hydrationData);
-  const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
-  const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, "2019/07/21"))
+  const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
+  const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   let barChart = new Chart(chart, {
     type: 'bar',
     data: {
@@ -86,7 +87,7 @@ function displayHydrationData() {
 });
 }
 
-function dateTest() {
-  let test = dayjs(date.value).format('YYYY-MM-DD')
-  console.log(test);
+function returnUserSelectedDate() {
+  let test = dayjs(date.value).format('YYYY/MM/DD')
+  return test
 }
