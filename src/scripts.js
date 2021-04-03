@@ -1,6 +1,8 @@
 const userInfo = new UserRepository(userData)
-// console.log(userInfo);
 let firstUser = new User(userInfo.returnUserData(3));
+
+const sleepInfo = new SleepRepository(sleepData);
+let sleepUser1 = new Sleep(firstUser, sleepInfo.returnUserSleepData(3));
 
 const greeting = document.querySelector('#greeting');
 const friends = document.querySelectorAll('.friend');
@@ -9,9 +11,16 @@ const averageStep = document.querySelector('#averageStepGoal');
 const chart = document.getElementById('myChart');
 const date = document.querySelector('#date');
 const dayDrink = document.querySelector('#dayDrink');
+const hoursSleptDay = document.getElementById('hoursSlept');
+const sleepQualityDay = document.getElementById('sleepQuality');
 
 window.addEventListener('load', generateFirstUser);
-date.addEventListener('input', displayHydrationData)
+date.addEventListener('input', displayWidgetsData);
+
+function displayWidgetsData() {
+  displayHydrationData();
+  displaySleepData();
+}
 
 function generateFirstUser() {
   // const firstUser = new User(userInfo.returnUserData(3));
@@ -19,6 +28,7 @@ function generateFirstUser() {
   displayFriends();
   displayStepGoal();
   displayHydrationData();
+  displaySleepData();
 };
 
 function displayFriends() {
@@ -87,6 +97,13 @@ function displayHydrationData() {
         }
     }
 });
+}
+
+function displaySleepData() {
+  let daySleep = sleepUser1.showHoursSleptByDate(returnUserSelectedDate());
+  let qualitySleepDay = sleepUser1.showSleepQualityByDate(returnUserSelectedDate())
+  hoursSleptDay.innerText = `Hours slept on this date: ${daySleep}`;
+  sleepQualityDay.innerText = `Quality Hours slept on this date: ${qualitySleepDay}`;
 }
 
 function returnUserSelectedDate() {

@@ -1,7 +1,7 @@
 class Sleep {
   constructor(user, userSleepData){
     this.id = user.id;
-    this.userSleepData = userSleepData
+    this.userSleepData = userSleepData;
   }
 
   calculateHoursSleptPerDay() {
