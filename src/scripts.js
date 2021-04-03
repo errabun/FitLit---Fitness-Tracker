@@ -8,6 +8,7 @@ const userStep = document.querySelector('#userStepGoal');
 const averageStep = document.querySelector('#averageStepGoal');
 const chart = document.getElementById('myChart');
 const date = document.querySelector('#date');
+const dayDrink = document.querySelector('#dayDrink');
 
 window.addEventListener('load', generateFirstUser);
 date.addEventListener('input', displayHydrationData)
@@ -47,6 +48,7 @@ function displayStepGoal() {
 
 function displayHydrationData() {
   let hydrationInfo = new HydrationRepository(hydrationData);
+  dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   let barChart = new Chart(chart, {
