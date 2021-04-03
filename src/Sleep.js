@@ -30,7 +30,7 @@ class Sleep {
    showHoursSleptByWeek(id, date) {
     const userSleepDates = this.userSleepData.map(user => user.date);
     const getDateIndex = userSleepDates.indexOf(date);
-    const sleepUserDate = this.userSleepData.slice(getDateIndex, getDateIndex + 7);
+    const sleepUserDate = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
     return this.userSleepData.reduce((obj, sleep) => {
       obj[sleep.date] = sleep.hoursSlept;
       return obj;
@@ -40,7 +40,7 @@ class Sleep {
   showSleepQualityByWeek(id, date) {
     const userQualityDates = this.userSleepData.map(user => user.date);
     const getDateIndex = userQualityDates.indexOf(date);
-    const qualityUserDate = this.userSleepData.slice(getDateIndex, getDateIndex + 7);
+    const qualityUserDate = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
     return this.userSleepData.reduce((obj, sleep) => {
       obj[sleep.date] = sleep.sleepQuality;
       return obj;

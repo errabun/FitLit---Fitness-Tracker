@@ -15,7 +15,7 @@ class Activity {
     const userStepData = this.returnUserStepDataId(id);
     const mapDates = userStepData.map(user => user.date);
     const getDateIndex = mapDates.indexOf(date);
-    const weekDates = mapDates.splice(getDateIndex, getDateIndex + 7);
+    const weekDates = mapDates.splice(getDateIndex - 6, getDateIndex + 1);
     let activityWeek = [];
     userStepData.forEach(activity => {
       if (weekDates.includes(activity.date)) {
