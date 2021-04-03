@@ -54,8 +54,31 @@ class Activity {
   achievedStepGoal(user, date) {
     const userStepData = this.getActivityByDateAndId(user.id, date);
     return userStepData.numSteps > user.dailyStepGoal;
-  }
+  };
 
+  exceededStepGoalDates(user) {
+    const totalUserStepData = this.returnUserStepDataId(user.id);
+    return totalUserStepData.reduce((stepGoalObj, currentUser) => {
+      stepGoalObj[currentUser.date] = currentUser.numSteps > user.dailyStepGoal;
+      return stepGoalObj;
+    }, {});
+  };
+
+  avgStairsClimbedDate(date) {
+    const allUserDataDate = this.returnStepDataDate(date);
+    return allUserDataDate.reduce((total, user) => {
+      total += user.flightsOfStairs;
+      return total;
+    }, 0) / allUserDataDate.length;
+  };
+
+  avgStepsAllDates(date) {
+    const allUserDataDate = this.returnStepDataDate(date);
+    return allUserDataDate.reduce((total, user) => {
+      total += user.numSteps;
+      return total;
+    }, 0) / allUserDataDate.length;
+  }
 
 }
 
