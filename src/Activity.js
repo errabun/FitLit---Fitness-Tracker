@@ -64,22 +64,13 @@ class Activity {
     }, {});
   };
 
-  avgStairsClimbedDate(date) {
-    const allUserDataDate = this.returnStepDataDate(date);
+  findAvgStatOnDate(date, stat) {
+    const allUserDataDate = returnStepDataDate(date);
     return allUserDataDate.reduce((total, user) => {
-      total += user.flightsOfStairs;
+      total += user[stat];
       return total;
     }, 0) / allUserDataDate.length;
   };
-
-  avgStepsAllDates(date) {
-    const allUserDataDate = this.returnStepDataDate(date);
-    return allUserDataDate.reduce((total, user) => {
-      total += user.numSteps;
-      return total;
-    }, 0) / allUserDataDate.length;
-  }
-
 }
 
 if (typeof module !== 'undefined') {
