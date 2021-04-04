@@ -14,6 +14,8 @@ const dayDrink = document.querySelector('#dayDrink');
 const hoursSleptDay = document.getElementById('hoursSlept');
 const sleepQualityDay = document.getElementById('sleepQuality');
 const sleepChart = document.getElementById('myChartSleep');
+const avgSleepHours = document.getElementById('avgSleepHours');
+const avgSleepQuality = document.getElementById('avgSleepQuality');
 
 window.addEventListener('load', generateFirstUser);
 date.addEventListener('input', displayWidgetsData);
@@ -104,16 +106,21 @@ function displaySleepData() {
   let daySleep = sleepUser1.showHoursSleptByDate(returnUserSelectedDate());
   let qualitySleepDay = sleepUser1.showSleepQualityByDate(returnUserSelectedDate())
   hoursSleptDay.innerText = `Hours slept on this date: ${daySleep}`;
-  sleepQualityDay.innerText = `Quality Hours slept on this date: ${qualitySleepDay}`;
+  sleepQualityDay.innerText = `Quality hours slept on this date: ${qualitySleepDay}`;
+  let userAvgSleepHours = sleepUser1.calcAllTimeSleepAvg('hoursSlept');
+  let userAvgQualityHours = sleepUser1.calcAllTimeSleepAvg('sleepQuality');
+  avgSleepHours.innerText = `Total average sleep hours: ${userAvgSleepHours}`;
+  avgSleepQuality.innerText = `Total average sleep quality: ${userAvgQualityHours}`;
   const weeklySleepDays = Object.keys(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
-  const weeklyQualitySleepHours = Object.values(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
+  const weeklySleepHours = Object.values(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
+  const weeklyQualitySleepHours = Object.values(sleepUser1.showSleepQualityByWeek(returnUserSelectedDate()));
   let userSleepChart = new Chart(sleepChart, {
     type: 'bar',
     data: {
         labels: weeklySleepDays,
         datasets: [{
             label: 'Number of Hours',
-            data: weeklyQualitySleepHours,
+            data: weeklySleepHours,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -129,6 +136,18 @@ function displaySleepData() {
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        },
+        {
+            label: 'Number of Quality Hours',
+            data: weeklyQualitySleepHours,
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+
             ],
             borderWidth: 1
         }]

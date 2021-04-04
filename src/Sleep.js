@@ -37,13 +37,22 @@ class Sleep {
     }, {})
   }
 
-  showSleepQualityByWeek(id, date) {
+  showSleepQualityByWeek(date) {
     const userQualityDates = this.userSleepData.map(user => user.date);
     const getDateIndex = userQualityDates.indexOf(date);
     const qualityUserDate = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
-    return this.userSleepData.reduce((obj, sleep) => {
+    return qualityUserDate.reduce((obj, sleep) => {
       obj[sleep.date] = sleep.sleepQuality;
       return obj;
     }, {})
+  }
+
+  calcAllTimeSleepAvg(sleepType) {
+    const totalSleep = this.userSleepData.map(user => user[sleepType]);
+    const avgSleep = totalSleep.reduce((total, hours) => {
+      total += hours
+      return total;
+    }, 0) / totalSleep.length;
+    return Math.round(100 * avgSleep) / 100;
   }
 }
