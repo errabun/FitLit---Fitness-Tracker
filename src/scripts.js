@@ -208,7 +208,7 @@ function displayHydrationData() {
   dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
-  let barChart = new Chart(chart, {
+  let hydroChart = new Chart(chart, {
     type: 'bar',
     data: {
         labels: weeklyHydrationDays,

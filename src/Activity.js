@@ -13,13 +13,9 @@ class Activity {
 
   getUserActivityWeek(id, date, activeStat) {
     const userStepData = this.userStepDataId(id);
-    console.log("Class: user step data:", userStepData)
     const mapDates = userStepData.map(user => user.date);
-    console.log("Class: user dates:", mapDates)
     const getDateIndex = mapDates.indexOf(date);
-    console.log("Class: index:", getDateIndex)
     const weekDates = userStepData.slice(getDateIndex - 6, getDateIndex + 1);
-    console.log("Class : weekly dates array", weekDates);
     return weekDates.reduce((obj, activity) => {
       obj[activity.date] = activity[activeStat];
       return obj;
