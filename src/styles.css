@@ -13,6 +13,7 @@ body {
 
 header {
   display: flex;
+  justify-content: space-between;
   height: 20vh;
   width: 90vw;
 }
@@ -33,12 +34,19 @@ img {
   border-color: rgba(225, 225, 225, 0.5);
 }
 
+article {
+  height: 200px;
+  width: 200px;
+}
+
 .friends {
   display: flex;
   flex-direction: column;
+  margin-top: 250px;
   justify-content: space-around;
-  height: 60vh;
-  width:  20vh;
+  align-items: center;
+  /* height: 400px;
+  width: 200px; */
 }
 
 /* .trackers {
@@ -107,10 +115,19 @@ input[type="date"] {
     background: blue;
   }
 
-  .activity {
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+  /* .activity {
     height: 22vh;
     width: 25vw;
-  }
+  } */
+
+  /* .friends {
+    margin-top: 10px;
+  } */
 
 }
 
