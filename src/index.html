@@ -17,16 +17,39 @@
       <section class="trackers">
         <div class="badge">(activity badge will go here)</div>
         <div class="activity-container">
-          <section class="activity">
-            <p id="userStepGoal"></p>
-            <p id="averageStepGoal"></p>
+          <section class="activity active-display large-container">
+            <section class="active-display">
+              <p id="userStepGoal"></p>
+              <p id="averageStepGoal"></p>
+            </section>
+            <section>
+              <p id="steps-day">steps latest day</p>
+              <p id="mins-active-day">num mins active day</p>
+              <p id="distance-day">distance walked day</p>
+              <div class="active-display">
+                <p id="steps-compare">num steps vs others latest day</p>
+                <p id="active-compare">num mins active vs others latest day</p>
+                <p id="stairs-compare">num flights climbed vs others latest day</p>
+              </div>
+            </section>
+            <section>
+              <canvas>weekly step counts chart</canvas>
+            </section>
           </section>
-          <section class="activity">activity data</section>
-          <section class="activity">
-            <p id="dayDrink"></p>
-            <canvas id="myChart"></canvas>
-          </section>
-          <section class="activity">sleep data</section>
+          <div class="sleep-hydro-container">
+            <section class="activity">
+              <p id="dayDrink"></p>
+              <canvas id="myChart"></canvas>
+            </section>
+            <section class="activity">
+              <p id="hoursSlept"></p>
+              <p id="sleepQuality"></p>
+              <p id="avgSleepHours"></p>
+              <p id="avgSleepQuality"></p>
+              <canvas id="myChartSleep"></canvas>
+            </section>
+          </div>
+
         </div>
       </section>
       <aside class="friends">
@@ -58,7 +81,10 @@
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../src/HydrationRepository.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="../src/Sleep.js"></script>
+    <script type="text/javascript" src="../src/SleepRepository.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="../src/Activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

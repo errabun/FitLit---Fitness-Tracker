@@ -1,7 +1,7 @@
 class Sleep {
   constructor(user, userSleepData){
     this.id = user.id;
-    this.userSleepData = userSleepData
+    this.userSleepData = userSleepData;
   }
 
   calculateHoursSleptPerDay() {
@@ -27,23 +27,32 @@ class Sleep {
      return sleepQuality;
    }
 
-   showHoursSleptByWeek(id, date) {
+   showHoursSleptByWeek(date) {
     const userSleepDates = this.userSleepData.map(user => user.date);
     const getDateIndex = userSleepDates.indexOf(date);
-    const sleepUserDate = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
-    return this.userSleepData.reduce((obj, sleep) => {
+    const sleepUserDates = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
+    return sleepUserDates.reduce((obj, sleep) => {
       obj[sleep.date] = sleep.hoursSlept;
       return obj;
     }, {})
   }
 
-  showSleepQualityByWeek(id, date) {
+  showSleepQualityByWeek(date) {
     const userQualityDates = this.userSleepData.map(user => user.date);
     const getDateIndex = userQualityDates.indexOf(date);
     const qualityUserDate = this.userSleepData.slice(getDateIndex - 6, getDateIndex + 1);
-    return this.userSleepData.reduce((obj, sleep) => {
+    return qualityUserDate.reduce((obj, sleep) => {
       obj[sleep.date] = sleep.sleepQuality;
       return obj;
     }, {})
+  }
+
+  calcAllTimeSleepAvg(sleepType) {
+    const totalSleep = this.userSleepData.map(user => user[sleepType]);
+    const avgSleep = totalSleep.reduce((total, hours) => {
+      total += hours
+      return total;
+    }, 0) / totalSleep.length;
+    return Math.round(100 * avgSleep) / 100;
   }
 }
