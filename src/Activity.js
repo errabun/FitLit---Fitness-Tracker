@@ -11,18 +11,15 @@ class Activity {
     return this.allStepData.filter(user => user.date === date);
   };
 
-  userActivityWeek(id, date) {
-    const userStepData = this.returnUserStepDataId(id);
+  getUserActivityWeek(id, date, activeStat) {
+    const userStepData = this.userStepDataId(id);
     const mapDates = userStepData.map(user => user.date);
     const getDateIndex = mapDates.indexOf(date);
-    const weekDates = mapDates.splice(getDateIndex, getDateIndex + 7);
-    let activityWeek = [];
-    userStepData.forEach(activity => {
-      if (weekDates.includes(activity.date)) {
-        activityWeek.push(activity);
-      }
-    })
-    return activityWeek;
+    const weekDates = userStepData.slice(getDateIndex - 6, getDateIndex + 1);
+    return weekDates.reduce((obj, activity) => {
+      obj[activity.date] = activity[activeStat];
+      return obj;
+    }, {})
   };
 
   avgActiveMinsWeek(id, date) {

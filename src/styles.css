@@ -25,6 +25,11 @@ main {
   width: 90vw;
 }
 
+img {
+  height: 110px;
+  width: 100px;
+}
+
 .friends {
   display: flex;
   flex-direction: column;
@@ -59,7 +64,7 @@ main {
 }
 
 .large-container {
-  width: 60vw; 
+  width: 60vw;
 }
 
 .activeDisplay {

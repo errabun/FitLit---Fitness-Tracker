@@ -5,6 +5,7 @@ const sleepInfo = new SleepRepository(sleepData);
 let sleepUser1 = new Sleep(firstUser, sleepInfo.returnUserSleepData(3));
 
 let userActivity = new Activity(activityData);
+let hydrationInfo = new HydrationRepository(hydrationData);
 
 
 const greeting = document.querySelector('#greeting');
@@ -25,6 +26,9 @@ const distanceWalked = document.getElementById('distance-day');
 const stepComparison = document.getElementById('steps-compare');
 const minsActiveCompare = document.getElementById('active-compare');
 const stairsComparison = document.getElementById('stairs-compare');
+const activityChart = document.getElementById('activity-chart');
+const minutesChart = document.getElementById('minutes-chart');
+const stairsChart = document.getElementById('stairs-chart');
 
 window.addEventListener('load', generateFirstUser);
 date.addEventListener('input', displayWidgetsData);
@@ -72,8 +76,122 @@ function displayActivityData() {
   minsActiveCompare.innerText = `On this date, you were active for ${userMinsActive} minutes. The average of all users on this date is ${avgActiveMins} minutes`;
   const avgStairsClimbed = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "flightsOfStairs");
   stairsComparison.innerText = `On this date, you climbed ${userFlightsClimbed} flight(s) of stairs. The average of all users on this date is ${avgStairsClimbed} flights of stairs`;
+  const weeklySteps = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+  const weeklyStepCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+  let activityChart1 = new Chart(activityChart, {
+    type: 'line',
+    data: {
+        labels: weeklySteps,
+        datasets: [{
+            label: 'Number of Steps',
+            data: weeklyStepCount,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+const weeklyStairs = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
+const weeklyStairCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
+let activityChart2 = new Chart(stairsChart, {
+  type: 'line',
+  data: {
+      labels: weeklyStairs,
+      datasets: [{
+          label: 'Flights of Stairs',
+          data: weeklyStairCount,
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+  }
+});
+const weeklyMinutes = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
+const weeklyMinutesCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
+let activityChart3 = new Chart(minutesChart, {
+  type: 'line',
+  data: {
+      labels: weeklyMinutes,
+      datasets: [{
+          label: 'Minutes Active',
+          data: weeklyMinutesCount,
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+  }
+});
 }
-
+//
 function getQualitySleepersOver3(date) {
   userRepo.userData.forEach(element => {
     sleepRepo.createSleepQualityData(date, element.id)
@@ -87,11 +205,10 @@ function displayStepGoal() {
 }
 
 function displayHydrationData() {
-  let hydrationInfo = new HydrationRepository(hydrationData);
   dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
-  let barChart = new Chart(chart, {
+  let hydroChart = new Chart(chart, {
     type: 'bar',
     data: {
         labels: weeklyHydrationDays,
@@ -193,5 +310,6 @@ function displaySleepData() {
 
 function returnUserSelectedDate() {
   let test = dayjs(date.value).format('YYYY/MM/DD')
+  console.log("dayjs", test);
   return test
 }
