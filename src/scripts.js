@@ -4,6 +4,8 @@ let firstUser = new User(userInfo.returnUserData(3));
 const sleepInfo = new SleepRepository(sleepData);
 let sleepUser1 = new Sleep(firstUser, sleepInfo.returnUserSleepData(3));
 
+let userActivity = new Activity(activityData);
+
 const greeting = document.querySelector('#greeting');
 const friends = document.querySelectorAll('.friend');
 const userStep = document.querySelector('#userStepGoal');
@@ -16,6 +18,9 @@ const sleepQualityDay = document.getElementById('sleepQuality');
 const sleepChart = document.getElementById('myChartSleep');
 const avgSleepHours = document.getElementById('avgSleepHours');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
+const userStepsDay = document.getElementById('steps-day');
+const userMinsActiveDay = document.getElementById('mins-active-day');
+
 
 window.addEventListener('load', generateFirstUser);
 date.addEventListener('input', displayWidgetsData);
@@ -23,6 +28,7 @@ date.addEventListener('input', displayWidgetsData);
 function displayWidgetsData() {
   displayHydrationData();
   displaySleepData();
+  displayActivityData();
 }
 
 function generateFirstUser() {
@@ -32,6 +38,7 @@ function generateFirstUser() {
   displayStepGoal();
   displayHydrationData();
   displaySleepData();
+  displayActivityData();
 };
 
 function displayFriends() {
@@ -46,6 +53,13 @@ function displayFriends() {
   friends[2].innerText = arrayOfFriends[2];
   friends[3].innerText = arrayOfFriends[3];
 };
+
+function displayActivityData() {
+  const userStepCount = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).numSteps;
+  userStepsDay.innerText = `On this date, you've taken ${userStepCount} steps`;
+  const userMinsActive = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).minutesActive;
+  userMinsActiveDay.innerText = `You were active for ${userMinsActive} minutes`;
+}
 
 function getQualitySleepersOver3(date) {
   userRepo.userData.forEach(element => {

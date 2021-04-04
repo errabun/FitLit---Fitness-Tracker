@@ -15,7 +15,7 @@ class Activity {
     const userStepData = this.returnUserStepDataId(id);
     const mapDates = userStepData.map(user => user.date);
     const getDateIndex = mapDates.indexOf(date);
-    const weekDates = mapDates.splice(getDateIndex - 6, getDateIndex + 1);
+    const weekDates = mapDates.splice(getDateIndex, getDateIndex + 7);
     let activityWeek = [];
     userStepData.forEach(activity => {
       if (weekDates.includes(activity.date)) {
@@ -26,7 +26,7 @@ class Activity {
   };
 
   avgActiveMinsWeek(id, date) {
-    const userWeekData = this.`userActivityWeek(id, date);
+    const userWeekData = this.userActivityWeek(id, date);
     const activeMinutes = userWeekData.reduce((total, currentDay) => {
       total += currentDay.minutesActive;
       return total;
@@ -64,6 +64,13 @@ class Activity {
     }, {});
   };
 
+  avgStairsClimbedDate(date) {
+    let allUserDataDate = returnStepDataDate(date);
+    const userStairsClimbed = allUserDataDate.map(user => user.flightsOfStairs);
+    const findMostStairs = Math.max(...userStairsClimbed);
+    return allUserDataDate.filter(user => user.flightsOfStairs === findMostStairs)
+  };
+
   findAvgStatOnDate(date, stat) {
     const allUserDataDate = returnStepDataDate(date);
     return allUserDataDate.reduce((total, user) => {
@@ -75,7 +82,4 @@ class Activity {
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;
-}
-const returnGoodSleepers = i.filter( user => {
-  return user.sleepQuality > 3;
 }
