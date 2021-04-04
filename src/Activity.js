@@ -65,14 +65,14 @@ class Activity {
   };
 
   avgStairsClimbedDate(date) {
-    let allUserDataDate = returnStepDataDate(date);
+    let allUserDataDate = this.allStepDataDate(date);
     const userStairsClimbed = allUserDataDate.map(user => user.flightsOfStairs);
     const findMostStairs = Math.max(...userStairsClimbed);
     return allUserDataDate.filter(user => user.flightsOfStairs === findMostStairs)
   };
 
   findAvgStatOnDate(date, stat) {
-    const allUserDataDate = returnStepDataDate(date);
+    const allUserDataDate = this.allStepDataDate(date);
     return allUserDataDate.reduce((total, user) => {
       total += user[stat];
       return total;
