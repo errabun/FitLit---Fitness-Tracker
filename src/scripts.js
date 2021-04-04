@@ -5,6 +5,7 @@ const sleepInfo = new SleepRepository(sleepData);
 let sleepUser1 = new Sleep(firstUser, sleepInfo.returnUserSleepData(3));
 
 let userActivity = new Activity(activityData);
+let hydrationInfo = new HydrationRepository(hydrationData);
 
 
 const greeting = document.querySelector('#greeting');
@@ -25,6 +26,7 @@ const distanceWalked = document.getElementById('distance-day');
 const stepComparison = document.getElementById('steps-compare');
 const minsActiveCompare = document.getElementById('active-compare');
 const stairsComparison = document.getElementById('stairs-compare');
+const activityChart = document.getElementById('activity-chart');
 
 window.addEventListener('load', generateFirstUser);
 date.addEventListener('input', displayWidgetsData);
@@ -72,8 +74,48 @@ function displayActivityData() {
   minsActiveCompare.innerText = `On this date, you were active for ${userMinsActive} minutes. The average of all users on this date is ${avgActiveMins} minutes`;
   const avgStairsClimbed = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "flightsOfStairs");
   stairsComparison.innerText = `On this date, you climbed ${userFlightsClimbed} flight(s) of stairs. The average of all users on this date is ${avgStairsClimbed} flights of stairs`;
+  let test = userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps")
+  console.log("script.js run function", test);
+//   const weeklySteps = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+//   const weeklyStepCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+//   let barChart = new Chart(activityChart, {
+//     type: 'line',
+//     data: {
+//         labels: weeklySteps,
+//         datasets: [{
+//             label: 'Number of Steps',
+//             data: weeklyStepCount,
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
+//                 'rgba(153, 102, 255, 0.2)',
+//                 'rgba(255, 159, 64, 0.2)'
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(54, 162, 235, 1)',
+//                 'rgba(255, 206, 86, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(153, 102, 255, 1)',
+//                 'rgba(255, 159, 64, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
 }
-
+//
 function getQualitySleepersOver3(date) {
   userRepo.userData.forEach(element => {
     sleepRepo.createSleepQualityData(date, element.id)
@@ -87,7 +129,6 @@ function displayStepGoal() {
 }
 
 function displayHydrationData() {
-  let hydrationInfo = new HydrationRepository(hydrationData);
   dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
@@ -193,5 +234,6 @@ function displaySleepData() {
 
 function returnUserSelectedDate() {
   let test = dayjs(date.value).format('YYYY/MM/DD')
+  console.log("dayjs", test);
   return test
 }
