@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 html,
 body {
   height: 100vh;
@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    background: white;
+    background: #deffe1;
 }
 
 header {
@@ -28,6 +28,9 @@ main {
 img {
   height: 110px;
   width: 100px;
+  border: 10px solid;
+  border-radius: 100px;
+  border-color: rgba(225, 225, 225, 0.5);
 }
 
 .friends {
@@ -38,40 +41,67 @@ img {
   width:  20vh;
 }
 
-.trackers {
+/* .trackers {
   display: flex;
   flex-direction: column;
   height: 80vh;
-  width:  80vw;
-}
+  width:  20vw;
+} */
 
-.badge {
-  height: 10vh;
-  width: 70vw;
-}
-
-.activity-container {
-  display: flex;
-  /* flex-wrap: wrap; */
-  height: 80vh;
-  width: 70vw;
-}
-
-.activity {
+/* .activity {
   height: 30vh;
   width: 30vw;
   margin: 15px;
-}
+} */
 
-.large-container {
-  width: 60vw;
-}
+/* .large-container {
+  height: 20vh;
+  width: 80vw;
+} */
 
-.activeDisplay {
+/* .active-display {
   display: flex;
   flex-direction: column;
+  height: 50px;
+  margin-top: 10px;
+  border: 1px solid red;
+} */
+
+.sleep-hydro-container {
+  display: flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.3);
+}
+/* HEADER */
+input[type="date"] {
+  appearance: none;
+    -webkit-appearance: none;
+    color: black;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border: none;
+    background: none;
+    padding:5px;
+    height: 50px;
 }
 
+/* CHARTS */
+.activity-chart-section {
+  display: flex;
+  flex-direction: row;
+  /* height: 10vh;
+  width: 80vw; */
+}
+
+.chart-container {
+  height: 200px;
+  width: 300px;
+}
+
+.chart-container-bottom {
+  height: 300px;
+  width: 400px;
+}
 @media screen and (max-width: 1000px) {
   body {
     background: blue;

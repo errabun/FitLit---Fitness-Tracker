@@ -15,14 +15,12 @@
     </header>
     <main class="userInfo">
       <section class="trackers">
-        <div class="badge">(activity badge will go here)</div>
-        <div class="activity-container">
-          <section class="activity active-display large-container">
+          <section class="active-display">
             <section class="active-display">
               <p id="userStepGoal"></p>
               <p id="averageStepGoal"></p>
             </section>
-            <section>
+            <section class="active-display">
               <p id="steps-day">steps latest day</p>
               <p id="mins-active-day">num mins active day</p>
               <p id="distance-day">distance walked day</p>
@@ -32,27 +30,35 @@
                 <p id="stairs-compare">num flights climbed vs others latest day</p>
               </div>
             </section>
-            <section>
-              <canvas id="activity-chart">weekly step counts chart</canvas>
-              <canvas id="minutes-chart">weekly step counts chart</canvas>
-              <canvas id="stairs-chart">weekly step counts chart</canvas>
+            <section class="activity-chart-section" >
+              <div class="chart-container">
+                <canvas id="activity-chart">weekly step counts chart</canvas>
+              </div>
+              <div class="chart-container">
+                <canvas id="minutes-chart">weekly step counts chart</canvas>
+              </div>
+              <div class="chart-container">
+                <canvas id="stairs-chart">weekly step counts chart</canvas>
+              </div>
             </section>
           </section>
           <div class="sleep-hydro-container">
             <section class="activity">
               <p id="dayDrink"></p>
-              <canvas id="myChart"></canvas>
+              <div class="chart-container-bottom">
+                <canvas id="myChart"></canvas>
+              </div>
             </section>
             <section class="activity">
               <p id="hoursSlept"></p>
               <p id="sleepQuality"></p>
               <p id="avgSleepHours"></p>
               <p id="avgSleepQuality"></p>
-              <canvas id="myChartSleep"></canvas>
+              <div class="chart-container-bottom">
+                <canvas id="myChartSleep"></canvas>
+              </div>
             </section>
           </div>
-
-        </div>
       </section>
       <aside class="friends">
         <h2>Friends</h2>
