@@ -8,13 +8,14 @@ body {
 }
 
 body {
-    background: #deffe1;
+    background: black;
+    color: white;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  height: 20vh;
+  /* height: 20vh; */
   width: 90vw;
 }
 
@@ -22,7 +23,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 95vh;
+  /* height: 95vh; */
   width: 90vw;
 }
 
@@ -31,7 +32,7 @@ img {
   width: 100px;
   border: 10px solid;
   border-radius: 100px;
-  border-color: rgba(225, 225, 225, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 article {
@@ -42,7 +43,7 @@ article {
 .friends {
   display: flex;
   flex-direction: column;
-  margin-top: 250px;
+  /* margin-top: 250px; */
   justify-content: space-around;
   align-items: center;
   /* height: 400px;
@@ -87,10 +88,37 @@ input[type="date"] {
     color: black;
     font-family: "Helvetica", arial, sans-serif;
     font-size: 18px;
-    border: none;
-    background: none;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    border-radius: 50px;
+    background: #e3e3e3;
     padding:5px;
     height: 50px;
+}
+
+/* P TAGS */
+.step {
+  color: #a7ff03;
+}
+
+.active {
+  color: #f67dff;
+}
+
+.stair {
+  color: #ff3333;
+}
+
+.hydro {
+  color: #47e7ff;
+}
+
+.sleep {
+  color: #fff04a;
+}
+
+.qual-sleep {
+  color: #FFA84A;
 }
 
 /* CHARTS */
@@ -104,11 +132,14 @@ input[type="date"] {
 .chart-container {
   height: 200px;
   width: 300px;
+  background-color: white;
+  margin: 5px;
 }
 
 .chart-container-bottom {
   height: 300px;
   width: 400px;
+  background-color: white;
 }
 @media screen and (max-width: 1000px) {
   body {

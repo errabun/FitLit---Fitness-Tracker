@@ -86,22 +86,12 @@ function displayActivityData() {
             label: 'Number of Steps',
             data: weeklyStepCount,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#a7ff03',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#a7ff03',
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -124,20 +114,10 @@ let activityChart2 = new Chart(stairsChart, {
           label: 'Flights of Stairs',
           data: weeklyStairCount,
           backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              '#ff3333',
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#ff3333',
           ],
           borderWidth: 1
       }]
@@ -162,20 +142,10 @@ let activityChart3 = new Chart(minutesChart, {
           label: 'Minutes Active',
           data: weeklyMinutesCount,
           backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              '#f67dff',
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#f67dff',
           ],
           borderWidth: 1
       }]
@@ -216,20 +186,23 @@ function displayHydrationData() {
             label: 'Number of Ounces',
             data: weeklyHydrationOunces,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+
             ],
             borderWidth: 1
         }]
@@ -266,20 +239,22 @@ function displaySleepData() {
             label: 'Number of Hours',
             data: weeklySleepHours,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
             ],
             borderWidth: 1
         },
@@ -287,10 +262,22 @@ function displaySleepData() {
             label: 'Number of Quality Hours',
             data: weeklyQualitySleepHours,
             backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
             ],
             borderColor: [
-                'rgba(54, 162, 235, 1)',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
 
             ],
             borderWidth: 1
@@ -309,7 +296,6 @@ function displaySleepData() {
 }
 
 function returnUserSelectedDate() {
-  let test = dayjs(date.value).format('YYYY/MM/DD')
-  console.log("dayjs", test);
-  return test
+  let selectedDate = dayjs(date.value).format('YYYY/MM/DD')
+  return selectedDate
 }
