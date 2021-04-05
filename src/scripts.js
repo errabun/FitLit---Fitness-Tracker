@@ -64,18 +64,18 @@ function displayFriends() {
 
 function displayActivityData() {
   const userStepCount = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).numSteps;
-  userStepsDay.innerText = `On this date, you've taken ${userStepCount} steps`;
+  userStepsDay.innerText = `Step Count: ${userStepCount}`;
   const userMinsActive = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).minutesActive;
   const userFlightsClimbed = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).flightsOfStairs;
-  userMinsActiveDay.innerText = `You were active for ${userMinsActive} minutes`;
+  userMinsActiveDay.innerText = `Minutes Active: ${userMinsActive}`;
   const distanceWalkedDay = userActivity.milesWalkedDay(firstUser, returnUserSelectedDate());
-  distanceWalked.innerText = `You walked ${distanceWalkedDay} miles`;
+  distanceWalked.innerText = `Distance walked: ${distanceWalkedDay}`;
   const avgStepsAll = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "numSteps");
-  stepComparison.innerText = `On this date, you've taken ${userStepCount} steps. The average of all users on this date is ${avgStepsAll}`;
+  stepComparison.innerText = `Your Steps: ${userStepCount} vs Users Average: ${avgStepsAll}`;
   const avgActiveMins = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "minutesActive");
-  minsActiveCompare.innerText = `On this date, you were active for ${userMinsActive} minutes. The average of all users on this date is ${avgActiveMins} minutes`;
+  minsActiveCompare.innerText = `Minutes Active: ${userMinsActive} vs Users Average: ${avgActiveMins}`;
   const avgStairsClimbed = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "flightsOfStairs");
-  stairsComparison.innerText = `On this date, you climbed ${userFlightsClimbed} flight(s) of stairs. The average of all users on this date is ${avgStairsClimbed} flights of stairs`;
+  stairsComparison.innerText = `Flights climbed: ${userFlightsClimbed} vs Users Average: ${avgStairsClimbed}`;
   const weeklySteps = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
   const weeklyStepCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
   let activityChart1 = new Chart(activityChart, {
@@ -170,12 +170,12 @@ function getQualitySleepersOver3(date) {
 };
 
 function displayStepGoal() {
-  userStep.innerText = `Your Daily Step Goal: ${firstUser.dailyStepGoal}`;
-  averageStep.innerText = `Average Step Goal for all Users: ${userInfo.calculateTotalAverageStepGoal()}`;
+  userStep.innerText = `Your Daily Step Goal:${firstUser.dailyStepGoal}`;
+  averageStep.innerText = `Users Average Step Goal: ${userInfo.calculateTotalAverageStepGoal()}`;
 }
 
 function displayHydrationData() {
-  dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
+  dayDrink.innerText = `Water Consumed: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   let hydroChart = new Chart(chart, {
