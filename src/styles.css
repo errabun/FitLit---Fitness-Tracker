@@ -166,24 +166,53 @@ input[type="date"] {
   width: 400px;
   background-color: white;
 }
-@media screen and (max-width: 1000px) {
-  body {
-    background: blue;
-  }
+
+@media screen and (max-width: 500px) {
 
   img {
-    height: 20px;
-    width: 20px;
+    height: 80px;
+    width: 80px;
   }
 
   main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* height: 95vh; */
     width: 90vw;
   }
 
+  header {
+    display: flex;
+    align-items: center;
+    width: 70vw;
+  }
+
+  article {
+    /* height: 200px; */
+    width: 95vw;
+    display: flex;
+    align-items: center;
+  }
+
+  h3 {
+    margin-left: 10px;
+  }
+
+  .greeting {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .user-style {
+    /* margin-left: 67px; */
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  .date-style {
+    margin-top: 110px;
+    margin-left: 25px;
+  }
 
   .activity {
     display: flex;
@@ -202,23 +231,18 @@ input[type="date"] {
     width: 50vw;
   }
 
+  .chart-container {
+    height: auto;
+    width: 95vw;
+  }
 
-  /* .activity {
-    height: 22vh;
-    width: 25vw;
-  } */
+  .chart-container-bottom {
+    height: auto;
+    width: 95vw;
+  }
 
-  /* .friends {
+  .graph {
     margin-top: 10px;
-  } */
+  }
 
 }
-
-/* @media only screen
-    and (device-width: 200px)
-    and (device-height: 200px)
-    and (-webkit-device-pixel-ratio: 3) {
-    body {
-      background: teal;
-    }
-    } */
