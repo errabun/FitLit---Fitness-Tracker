@@ -64,44 +64,35 @@ function displayFriends() {
 
 function displayActivityData() {
   const userStepCount = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).numSteps;
-  userStepsDay.innerText = `On this date, you've taken ${userStepCount} steps`;
+  userStepsDay.innerText = `Step Count: ${userStepCount}`;
   const userMinsActive = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).minutesActive;
   const userFlightsClimbed = userActivity.getActivityByDateAndId(3, returnUserSelectedDate()).flightsOfStairs;
-  userMinsActiveDay.innerText = `You were active for ${userMinsActive} minutes`;
+  userMinsActiveDay.innerText = `Minutes Active: ${userMinsActive}`;
   const distanceWalkedDay = userActivity.milesWalkedDay(firstUser, returnUserSelectedDate());
-  distanceWalked.innerText = `You walked ${distanceWalkedDay} miles`;
+  distanceWalked.innerText = `Distance walked: ${distanceWalkedDay}`;
   const avgStepsAll = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "numSteps");
-  stepComparison.innerText = `On this date, you've taken ${userStepCount} steps. The average of all users on this date is ${avgStepsAll}`;
+  stepComparison.innerText = `Your Steps: ${userStepCount} vs Users Average: ${avgStepsAll}`;
   const avgActiveMins = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "minutesActive");
-  minsActiveCompare.innerText = `On this date, you were active for ${userMinsActive} minutes. The average of all users on this date is ${avgActiveMins} minutes`;
+  minsActiveCompare.innerText = `Minutes Active: ${userMinsActive} vs Users Average: ${avgActiveMins}`;
   const avgStairsClimbed = userActivity.findAvgStatOnDate(returnUserSelectedDate(), "flightsOfStairs");
-  stairsComparison.innerText = `On this date, you climbed ${userFlightsClimbed} flight(s) of stairs. The average of all users on this date is ${avgStairsClimbed} flights of stairs`;
+  stairsComparison.innerText = `Flights climbed: ${userFlightsClimbed} vs Users Average: ${avgStairsClimbed}`;
   const weeklySteps = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
   const weeklyStepCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+  const newDateFormatSteps = weeklySteps.map(date => returnNewDateFormat(date))
   let activityChart1 = new Chart(activityChart, {
     type: 'line',
     data: {
-        labels: weeklySteps,
+        labels: newDateFormatSteps,
         datasets: [{
             label: 'Number of Steps',
             data: weeklyStepCount,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#a7ff03',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#a7ff03',
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -116,28 +107,19 @@ function displayActivityData() {
 });
 const weeklyStairs = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
 const weeklyStairCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
+const newDateFormatStair = weeklyStairs.map(date => returnNewDateFormat(date))
 let activityChart2 = new Chart(stairsChart, {
   type: 'line',
   data: {
-      labels: weeklyStairs,
+      labels: newDateFormatStair,
       datasets: [{
           label: 'Flights of Stairs',
           data: weeklyStairCount,
           backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              '#ff3333',
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#ff3333',
           ],
           borderWidth: 1
       }]
@@ -154,28 +136,19 @@ let activityChart2 = new Chart(stairsChart, {
 });
 const weeklyMinutes = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
 const weeklyMinutesCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
+const newDateFormatMin = weeklyMinutes.map(date => returnNewDateFormat(date))
 let activityChart3 = new Chart(minutesChart, {
   type: 'line',
   data: {
-      labels: weeklyMinutes,
+      labels: newDateFormatMin,
       datasets: [{
           label: 'Minutes Active',
           data: weeklyMinutesCount,
           backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              '#f67dff',
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#f67dff',
           ],
           borderWidth: 1
       }]
@@ -200,36 +173,40 @@ function getQualitySleepersOver3(date) {
 };
 
 function displayStepGoal() {
-  userStep.innerText = `Your Daily Step Goal: ${firstUser.dailyStepGoal}`;
-  averageStep.innerText = `Average Step Goal for all Users: ${userInfo.calculateTotalAverageStepGoal()}`;
+  userStep.innerText = `Your Daily Step Goal:${firstUser.dailyStepGoal}`;
+  averageStep.innerText = `Users Average Step Goal: ${userInfo.calculateTotalAverageStepGoal()}`;
 }
 
 function displayHydrationData() {
-  dayDrink.innerText = `Water Consumed Today: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
+  dayDrink.innerText = `Water Consumed: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
+  const newDateFormatHydro = weeklyHydrationDays.map(date => returnNewDateFormat(date))
   let hydroChart = new Chart(chart, {
     type: 'bar',
     data: {
-        labels: weeklyHydrationDays,
+        labels: newDateFormatHydro,
         datasets: [{
             label: 'Number of Ounces',
             data: weeklyHydrationOunces,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
+                '#47e7ff',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+              '#47e7ff',
+
             ],
             borderWidth: 1
         }]
@@ -256,30 +233,34 @@ function displaySleepData() {
   avgSleepHours.innerText = `Total average sleep hours: ${userAvgSleepHours}`;
   avgSleepQuality.innerText = `Total average sleep quality: ${userAvgQualityHours}`;
   const weeklySleepDays = Object.keys(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
+  const newDateFormat = weeklySleepDays.map(date => returnNewDateFormat(date))
   const weeklySleepHours = Object.values(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
   const weeklyQualitySleepHours = Object.values(sleepUser1.showSleepQualityByWeek(returnUserSelectedDate()));
+
   let userSleepChart = new Chart(sleepChart, {
     type: 'bar',
     data: {
-        labels: weeklySleepDays,
+        labels: newDateFormat,
         datasets: [{
             label: 'Number of Hours',
             data: weeklySleepHours,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
+                '#fff04a',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
+              '#fff04a',
             ],
             borderWidth: 1
         },
@@ -287,10 +268,22 @@ function displaySleepData() {
             label: 'Number of Quality Hours',
             data: weeklyQualitySleepHours,
             backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
+                '#ffa84a',
             ],
             borderColor: [
-                'rgba(54, 162, 235, 1)',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
+              '#ffa84a',
 
             ],
             borderWidth: 1
@@ -309,7 +302,11 @@ function displaySleepData() {
 }
 
 function returnUserSelectedDate() {
-  let test = dayjs(date.value).format('YYYY/MM/DD')
-  console.log("dayjs", test);
-  return test
+  let selectedDate = dayjs(date.value).format('YYYY/MM/DD')
+  return selectedDate
+}
+
+function returnNewDateFormat(date) {
+  let selectedDate = dayjs(date).format('MM/DD')
+  return selectedDate
 }

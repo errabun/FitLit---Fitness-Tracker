@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 html,
 body {
   height: 100vh;
@@ -8,87 +8,241 @@ body {
 }
 
 body {
-    background: white;
+    background: black;
+    color: white;
+    font-family: Avenir;
+    font-size: 20px;
 }
 
 header {
   display: flex;
-  height: 20vh;
-  width: 90vw;
+  justify-content: space-between;
+  /* height: 20vh; */
+  width: 70vw;
 }
 
 main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 95vh;
+  /* height: 95vh; */
   width: 90vw;
 }
 
 img {
   height: 110px;
   width: 100px;
+  border: 10px solid;
+  border-radius: 100px;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+article {
+  height: 200px;
+  width: 200px;
 }
 
 .friends {
   display: flex;
   flex-direction: column;
+  /* margin-top: 250px; */
   justify-content: space-around;
-  height: 60vh;
-  width:  20vh;
+  align-items: center;
+  /* height: 400px;
+  width: 200px; */
+}
+
+
+/* .activity {
+  height: 30vh;
+  width: 30vw;
+  margin: 15px;
+} */
+
+/* .large-container {
+  height: 20vh;
+  width: 80vw;
+} */
+
+/* .active-display {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  margin-top: 10px;
+  border: 1px solid red;
+} */
+
+/* .sleep-hydro-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+} */
+/* HEADER */
+input[type="date"] {
+  appearance: none;
+    -webkit-appearance: none;
+    color: black;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    border-radius: 50px;
+    background: #e3e3e3;
+    padding:5px;
+    height: 50px;
+}
+
+.user-style {
+  margin-left: 67px;
+  margin-top: 20px;
+}
+
+.date-style {
+  margin-top: 60px;
+}
+
+.greeting {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* ACTIVITY WIDGITS */
+.activity {
+  display: flex;
+  justify-content: space-around;
+}
+.widgit-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .trackers {
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  width:  80vw;
 }
 
-.badge {
-  height: 10vh;
-  width: 70vw;
+/* P TAGS */
+.step {
+  color: #a7ff03;
 }
 
-.activity-container {
+.active {
+  color: #f67dff;
+}
+
+.stair {
+  color: #ff3333;
+}
+
+.hydro {
+  color: #47e7ff;
+}
+
+.sleep {
+  color: #fff04a;
+}
+
+.qual-sleep {
+  color: #FFA84A;
+}
+
+/* CHARTS */
+.activity-chart-section {
   display: flex;
-  /* flex-wrap: wrap; */
-  height: 80vh;
-  width: 70vw;
+  flex-direction: row;
+  /* height: 10vh;
+  width: 80vw; */
 }
 
-.activity {
-  height: 30vh;
-  width: 30vw;
-  margin: 15px;
+.chart-container {
+  height: 200px;
+  width: 400px;
+  background-color: white;
+  margin: 5px;
 }
 
-.large-container {
-  width: 60vw;
+.chart-container-bottom {
+  height: 200px;
+  width: 400px;
+  background-color: white;
 }
 
-.activeDisplay {
-  display: flex;
-  flex-direction: column;
-}
+@media screen and (max-width: 800px) {
 
-@media screen and (max-width: 1000px) {
-  body {
-    background: blue;
+  img {
+    height: 80px;
+    width: 80px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90vw;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    width: 70vw;
+  }
+
+  article {
+    /* height: 200px; */
+    width: 95vw;
+    display: flex;
+    align-items: center;
+  }
+
+  h3 {
+    margin-left: 10px;
+  }
+
+  .greeting {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .user-style {
+    /* margin-left: 67px; */
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  .date-style {
+    margin-top: 110px;
+    margin-left: 25px;
   }
 
   .activity {
-    height: 22vh;
-    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .widgit-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .activity-chart-section {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  }
+
+  .chart-container {
+    height: auto;
+    width: 95vw;
+  }
+
+  .chart-container-bottom {
+    height: auto;
+    width: 95vw;
+  }
+
+  .graph {
+    margin-top: 10px;
   }
 
 }
-
-/* @media only screen
-    and (device-width: 200px)
-    and (device-height: 200px)
-    and (-webkit-device-pixel-ratio: 3) {
-    body {
-      background: teal;
-    }
-    } */

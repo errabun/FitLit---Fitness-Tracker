@@ -8,51 +8,67 @@
   </head>
   <body>
     <header class='hello'>
-      <img src="../docs/HS1.jpg" alt="user image">
-      <p id="greeting">Hello, user</p>
-      <label for="date">Date:</label>
-      <input type="date" id="date" value="2019-09-22" min="2019-06-15" max="2019-09-22">
+      <div class="user-style">
+        <img src="../docs/HS1.jpg" alt="user image">
+        <p class="greeting" id="greeting">Hello, user</p>
+      </div>
+      <div class="date-style">
+        <label for="date">Date:</label>
+        <input type="date" id="date" value="2019-09-22" min="2019-06-15" max="2019-09-22">
+      </div>
     </header>
     <main class="userInfo">
-      <section class="trackers">
-        <div class="badge">(activity badge will go here)</div>
-        <div class="activity-container">
-          <section class="activity active-display large-container">
-            <section class="active-display">
-              <p id="userStepGoal"></p>
-              <p id="averageStepGoal"></p>
-            </section>
-            <section>
-              <p id="steps-day">steps latest day</p>
-              <p id="mins-active-day">num mins active day</p>
-              <p id="distance-day">distance walked day</p>
-              <div class="active-display">
-                <p id="steps-compare">num steps vs others latest day</p>
-                <p id="active-compare">num mins active vs others latest day</p>
-                <p id="stairs-compare">num flights climbed vs others latest day</p>
+      <section>
+          <section>
+            <div class="widgit-container">
+              <section>
+                <p class="step" id="userStepGoal"></p>
+                <p class="step" id="averageStepGoal"></p>
+                <p class="step" id="steps-day">steps latest day</p>
+                <p class="step" id="distance-day">distance walked day</p>
+                <p class="step" id="steps-compare">num steps vs others latest day</p>
+              </section>
+              <section>
+                <p class="active" id="mins-active-day">num mins active day</p>
+                <p class="active" id="active-compare">num mins active vs others latest day</p>
+              </section>
+              <section>
+                <p class="stair" id="stairs-compare">num flights climbed vs others latest day</p>
+              </section>
+            </div>
+            <section class="activity-chart-section" >
+              <div class="chart-container">
+                <canvas id="activity-chart">weekly step counts chart</canvas>
               </div>
-            </section>
-            <section>
-              <canvas id="activity-chart">weekly step counts chart</canvas>
-              <canvas id="minutes-chart">weekly step counts chart</canvas>
-              <canvas id="stairs-chart">weekly step counts chart</canvas>
+              <div class="chart-container">
+                <canvas id="minutes-chart">weekly step counts chart</canvas>
+              </div>
+              <div class="chart-container">
+                <canvas id="stairs-chart">weekly step counts chart</canvas>
+              </div>
             </section>
           </section>
           <div class="sleep-hydro-container">
             <section class="activity">
-              <p id="dayDrink"></p>
-              <canvas id="myChart"></canvas>
+              <p class="hydro" id="dayDrink"></p>
+              <div class="trackers">
+                <p class="sleep" id="hoursSlept"></p>
+                <p class="sleep"id="avgSleepHours"></p>
+              </div>
+              <div class= "trackers">
+                <p class="qual-sleep" id="sleepQuality"></p>
+                <p class="qual-sleep" id="avgSleepQuality"></p>
+              </div>
             </section>
             <section class="activity">
-              <p id="hoursSlept"></p>
-              <p id="sleepQuality"></p>
-              <p id="avgSleepHours"></p>
-              <p id="avgSleepQuality"></p>
-              <canvas id="myChartSleep"></canvas>
+              <div class="chart-container-bottom">
+                <canvas id="myChart"></canvas>
+              </div>
+              <div class="chart-container-bottom graph">
+                <canvas id="myChartSleep"></canvas>
+              </div>
             </section>
           </div>
-
-        </div>
       </section>
       <aside class="friends">
         <h2>Friends</h2>
