@@ -3314,6 +3314,35 @@ describe('Activity', function() {
 
   it('should be able to return an obj showing all the dates the user exceeded their daily step goal', function() {
 
-    expect.(activeInstance.exceededStepGoalDates(user1)).to.deep.equal()
+    expect(activeInstance.exceededStepGoalDates(user1)).to.deep.equal({
+      '2019/06/15': false,
+      '2019/06/16': false,
+      '2019/06/17': false,
+      '2019/06/18': true,
+      '2019/06/19': false,
+      '2019/06/20': true,
+      '2019/06/21': true,
+      '2019/06/22': true
+    });
+  });
+
+  it('should be able to return the user who climbed the most flights of stairs on a given date', function() {
+
+    expect(activeInstance.userMostStairsDate('2019/06/18')).to.deep.equal([
+      {
+        userID: 40,
+        date: '2019/06/18',
+        numSteps: 10549,
+        minutesActive: 58,
+        flightsOfStairs: 50
+      }
+    ]);
+  });
+
+  it('should be able to find the average of an activity stat on a given date', function() {
+
+    expect(activeInstance.findAvgStatOnDate('2019/06/19', 'minutesActive')).to.equal(179.22);
+
+    expect(activeInstance.findAvgStatOnDate('2019/06/22', 'numSteps')).to.equal(8062.88);
   })
 })

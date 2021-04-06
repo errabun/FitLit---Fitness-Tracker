@@ -15,7 +15,7 @@ class Activity {
     const userActivity = this.userStepDataId(id);
     return userActivity.find(day => day.date === date);
   };
-  
+
   getUserActivityWeek(id, date, activeStat) {
     const userStepData = this.userStepDataId(id);
     const mapDates = userStepData.map(user => user.date);
@@ -24,7 +24,7 @@ class Activity {
     return weekDates.reduce((obj, activity) => {
       obj[activity.date] = activity[activeStat];
       return obj;
-    }, {})
+    }, {});
   };
 
   avgActiveMinsWeek(id, date) {
@@ -33,9 +33,9 @@ class Activity {
     const totalActiveMins = activeMinutes.reduce((total, cv) => {
       total += cv;
       return total;
-    }, 0 )
+    }, 0 );
     return Math.round(totalActiveMins / 7);
-  }
+  };
 
 
   milesWalkedDay(user, date) {
@@ -56,14 +56,14 @@ class Activity {
   };
 
   exceededStepGoalDates(user) {
-    const totalUserStepData = this.returnUserStepDataId(user.id);
+    const totalUserStepData = this.userStepDataId(user.id);
     return totalUserStepData.reduce((stepGoalObj, currentUser) => {
       stepGoalObj[currentUser.date] = currentUser.numSteps > user.dailyStepGoal;
       return stepGoalObj;
     }, {});
   };
 
-  avgStairsClimbedDate(date) {
+  userMostStairsDate(date) {
     let allUserDataDate = this.allStepDataDate(date);
     const userStairsClimbed = allUserDataDate.map(user => user.flightsOfStairs);
     const findMostStairs = Math.max(...userStairsClimbed);
