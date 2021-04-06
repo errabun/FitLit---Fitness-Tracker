@@ -4,7 +4,7 @@ const expect = chai.expect;
 const UserRespository = require('../src/UserRepository');
 const User = require('../src/User');
 const SleepRepository = require('../src/SleepRepository');
-const Sleep = require('../src/Sleep');
+// const Sleep = require('../src/Sleep');
 
 describe('SleepRepository', function() {
   let userRepository, user, userData, sleepData;
@@ -184,9 +184,9 @@ describe('SleepRepository', function() {
   },
 ];
 
+user = new User(userRepositorys.returnUserData(3));
+sleepRepository = new SleepRepository(sleepData);
 userRepository = new UserRepository(userData);
-user = new User(userRepo.returnUserData(3));
-sleepRepository = new SleepRepository(sleepData)
 
 });
 
@@ -226,7 +226,7 @@ sleepRepository = new SleepRepository(sleepData)
 it('should return the specified user sleepData',
 function() {
 
-  let data = returnUserSleepData(id)
+  let data = sleepRepository.returnUserSleepData(id)
 
   expect(data).to.equal({
     "id": 3,
@@ -243,5 +243,27 @@ function() {
     ]
   })
 })
+
+it('should return average sleep quality for all users',
+function() {
+
+let data = sleepRepository.returnAverageSleepQuality()
+
+expect(data).to.equal(4.128571428571429)
+})
+
+it('should find all users who average a sleep quality greater than 3 for a given week (7 days) ',
+function() {
+  let sleepQualityForUsers = [];
+
+  userRepository.userData.forEach(element => {
+    sleepRepository.createSleepQualityData("2019/06/15", element.id)
+  });
+  var userResult = sleepRepository.getQualitySleepers()
+  return userResult
+
+  expect(userResult).to.deep.equal( { id: 2, averageQuality: 4.7 },
+  { id: 3, averageQuality: 5.485714285714286 })
+});
 
 });
