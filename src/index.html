@@ -18,7 +18,7 @@
       </div>
     </header>
     <main class="userInfo">
-      <section class="trackers">
+      <section>
           <section class="active-display">
             <div class="widgit-container">
               <section class="active-display">
@@ -51,15 +51,19 @@
           <div class="sleep-hydro-container">
             <section class="activity">
               <p class="hydro" id="dayDrink"></p>
-              <div class="chart-container-bottom">
-                <canvas id="myChart"></canvas>
+              <div class="trackers">
+                <p class="sleep" id="hoursSlept"></p>
+                <p class="sleep"id="avgSleepHours"></p>
+              </div>
+              <div class= "trackers">
+                <p class="qual-sleep" id="sleepQuality"></p>
+                <p class="qual-sleep" id="avgSleepQuality"></p>
               </div>
             </section>
             <section class="activity">
-              <p class="sleep" id="hoursSlept"></p>
-              <p class="sleep"id="avgSleepHours"></p>
-              <p class="qual-sleep" id="sleepQuality"></p>
-              <p class="qual-sleep" id="avgSleepQuality"></p>
+              <div class="chart-container-bottom">
+                <canvas id="myChart"></canvas>
+              </div>
               <div class="chart-container-bottom">
                 <canvas id="myChartSleep"></canvas>
               </div>

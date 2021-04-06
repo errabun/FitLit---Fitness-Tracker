@@ -52,12 +52,6 @@ article {
   width: 200px; */
 }
 
-/* .trackers {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-  width:  20vw;
-} */
 
 /* .activity {
   height: 30vh;
@@ -78,11 +72,11 @@ article {
   border: 1px solid red;
 } */
 
-.sleep-hydro-container {
+/* .sleep-hydro-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
+} */
 /* HEADER */
 input[type="date"] {
   appearance: none;
@@ -113,9 +107,18 @@ input[type="date"] {
 }
 
 /* ACTIVITY WIDGITS */
+.activity {
+  display: flex;
+  justify-content: space-around;
+}
 .widgit-container {
   display: flex;
   flex-direction: row;
+}
+
+.trackers {
+  display: flex;
+  flex-direction: column;
 }
 
 /* P TAGS */
@@ -172,6 +175,33 @@ input[type="date"] {
     height: 20px;
     width: 20px;
   }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* height: 95vh; */
+    width: 90vw;
+  }
+
+
+  .activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .widgit-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .activity-chart-section {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  }
+
 
   /* .activity {
     height: 22vh;
