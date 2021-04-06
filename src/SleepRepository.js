@@ -42,3 +42,7 @@ class SleepRepository {
     return heavySleepers
   }
 }
+
+if (typeof module !== 'undefined') {
+  module.exports = SleepRepository;
+}
