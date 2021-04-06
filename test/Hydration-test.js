@@ -4,8 +4,8 @@ const expect = chai.expect;
 const Hydration = require('../src/Hydration');
 const HydrationRepository = require('../src/HydrationRepository');
 
-describe('HydrationRepository', function() {
-  let user1, hydrationData, userHydrationData
+describe('Hydration', function() {
+  let user1, hydrationData, userHydrationData;
 
   beforeEach(function() {
     hydrationData = [
@@ -2512,10 +2512,9 @@ describe('HydrationRepository', function() {
     ];
 
     userHydrationData = new HydrationRepository(hydrationData);
-    // console.log(userHydrationData.returnUserHydration(5));
-    user1 = new Hydration(userHydrationData.returnUserHydration(5));
-    console.log(user1); 
-  })
+
+    user1 = new Hydration(userHydrationData.userHydrationIdDate(5, '2019/06/15'));
+  });
 
   it('should be a function', function() {
 
@@ -2528,7 +2527,17 @@ describe('HydrationRepository', function() {
   });
 
   it('should be able to store the users id', function() {
-    // console.log(user1);
+
     expect(user1.id).to.equal(5);
+  })
+
+  it('should be able to store the date of activity', function() {
+
+    expect(user1.date).to.equal('2019/06/15');
+  })
+
+  it('should be able to store the how much water they drank on the specified date', function() {
+
+    expect(user1.numOunces).to.equal(42);
   })
 })

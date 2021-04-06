@@ -7,6 +7,11 @@ class HydrationRepository {
     return this.hydrationData.filter(user =>  user.userID === id);
   };
 
+  userHydrationIdDate(id, date) {
+    const userHydrationId = this.returnUserHydration(id);
+    return userHydrationId.find(user =>  user.date === date);
+  };
+
   totalAvgFluidPerDay(id) {
     const ozsPerDay = this.returnUserHydration(id);
     const totalAvg = ozsPerDay.reduce((total, user) => {

@@ -2536,17 +2536,17 @@ describe('HydrationRepository', function() {
   it('should be able to return a users hydration history', function() {
 
     expect(hydrationInfo.returnUserHydration(4)).to.deep.equal([
-    { userID: 4, date: '2019/06/15', numOunces: 85 },
-    { userID: 4, date: '2019/06/16', numOunces: 95 },
-    { userID: 4, date: '2019/06/17', numOunces: 82 },
-    { userID: 4, date: '2019/06/18', numOunces: 93 },
-    { userID: 4, date: '2019/06/19', numOunces: 21 },
-    { userID: 4, date: '2019/06/20', numOunces: 95 },
-    { userID: 4, date: '2019/06/21', numOunces: 91 },
-    { userID: 4, date: '2019/06/22', numOunces: 34 },
-    { userID: 4, date: '2019/06/23', numOunces: 62 },
-    { userID: 4, date: '2019/06/24', numOunces: 66 }
-    ])
+      { userID: 4, date: '2019/06/15', numOunces: 85 },
+      { userID: 4, date: '2019/06/16', numOunces: 95 },
+      { userID: 4, date: '2019/06/17', numOunces: 82 },
+      { userID: 4, date: '2019/06/18', numOunces: 93 },
+      { userID: 4, date: '2019/06/19', numOunces: 21 },
+      { userID: 4, date: '2019/06/20', numOunces: 95 },
+      { userID: 4, date: '2019/06/21', numOunces: 91 },
+      { userID: 4, date: '2019/06/22', numOunces: 34 },
+      { userID: 4, date: '2019/06/23', numOunces: 62 },
+      { userID: 4, date: '2019/06/24', numOunces: 66 }
+    ]);
   });
 
   it('should  be able to return a users average fluid intake', function() {
@@ -2561,7 +2561,7 @@ describe('HydrationRepository', function() {
 
   it('should be able to return the number of ounces of fluid a user drank over the course of a week specified by starting date', function() {
 
-    expect(hydrationInfo.fluidOzsDrankWeek(4, '2019/06/17')).to.deep.equal({
+    expect(hydrationInfo.fluidOzsDrankWeek(4, '2019/06/23')).to.deep.equal({
       '2019/06/17': 82,
       '2019/06/18': 93,
       '2019/06/19': 21,
@@ -2569,7 +2569,6 @@ describe('HydrationRepository', function() {
       '2019/06/21': 91,
       '2019/06/22': 34,
       '2019/06/23': 62
-      });
+    });
   });
-
 })
