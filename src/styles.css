@@ -167,7 +167,7 @@ input[type="date"] {
   background-color: white;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
 
   img {
     height: 80px;

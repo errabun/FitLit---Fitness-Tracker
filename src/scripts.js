@@ -78,10 +78,11 @@ function displayActivityData() {
   stairsComparison.innerText = `Flights climbed: ${userFlightsClimbed} vs Users Average: ${avgStairsClimbed}`;
   const weeklySteps = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
   const weeklyStepCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "numSteps"));
+  const newDateFormatSteps = weeklySteps.map(date => returnNewDateFormat(date))
   let activityChart1 = new Chart(activityChart, {
     type: 'line',
     data: {
-        labels: weeklySteps,
+        labels: newDateFormatSteps,
         datasets: [{
             label: 'Number of Steps',
             data: weeklyStepCount,
@@ -106,10 +107,11 @@ function displayActivityData() {
 });
 const weeklyStairs = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
 const weeklyStairCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "flightsOfStairs"));
+const newDateFormatStair = weeklyStairs.map(date => returnNewDateFormat(date))
 let activityChart2 = new Chart(stairsChart, {
   type: 'line',
   data: {
-      labels: weeklyStairs,
+      labels: newDateFormatStair,
       datasets: [{
           label: 'Flights of Stairs',
           data: weeklyStairCount,
@@ -134,10 +136,11 @@ let activityChart2 = new Chart(stairsChart, {
 });
 const weeklyMinutes = Object.keys(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
 const weeklyMinutesCount = Object.values(userActivity.getUserActivityWeek(3, returnUserSelectedDate(), "minutesActive"));
+const newDateFormatMin = weeklyMinutes.map(date => returnNewDateFormat(date))
 let activityChart3 = new Chart(minutesChart, {
   type: 'line',
   data: {
-      labels: weeklyMinutes,
+      labels: newDateFormatMin,
       datasets: [{
           label: 'Minutes Active',
           data: weeklyMinutesCount,
@@ -178,10 +181,11 @@ function displayHydrationData() {
   dayDrink.innerText = `Water Consumed: ${hydrationInfo.fluidOzsDrankDay(3, returnUserSelectedDate())} ounces`;
   const weeklyHydrationDays = Object.keys(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
   const weeklyHydrationOunces = Object.values(hydrationInfo.fluidOzsDrankWeek(3, returnUserSelectedDate()))
+  const newDateFormatHydro = weeklyHydrationDays.map(date => returnNewDateFormat(date))
   let hydroChart = new Chart(chart, {
     type: 'bar',
     data: {
-        labels: weeklyHydrationDays,
+        labels: newDateFormatHydro,
         datasets: [{
             label: 'Number of Ounces',
             data: weeklyHydrationOunces,
@@ -229,12 +233,14 @@ function displaySleepData() {
   avgSleepHours.innerText = `Total average sleep hours: ${userAvgSleepHours}`;
   avgSleepQuality.innerText = `Total average sleep quality: ${userAvgQualityHours}`;
   const weeklySleepDays = Object.keys(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
+  const newDateFormat = weeklySleepDays.map(date => returnNewDateFormat(date))
   const weeklySleepHours = Object.values(sleepUser1.showHoursSleptByWeek(returnUserSelectedDate()));
   const weeklyQualitySleepHours = Object.values(sleepUser1.showSleepQualityByWeek(returnUserSelectedDate()));
+
   let userSleepChart = new Chart(sleepChart, {
     type: 'bar',
     data: {
-        labels: weeklySleepDays,
+        labels: newDateFormat,
         datasets: [{
             label: 'Number of Hours',
             data: weeklySleepHours,
@@ -297,5 +303,10 @@ function displaySleepData() {
 
 function returnUserSelectedDate() {
   let selectedDate = dayjs(date.value).format('YYYY/MM/DD')
+  return selectedDate
+}
+
+function returnNewDateFormat(date) {
+  let selectedDate = dayjs(date).format('MM/DD')
   return selectedDate
 }
