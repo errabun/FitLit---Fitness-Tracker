@@ -259,11 +259,16 @@ function() {
   userRepository.userData.forEach(element => {
     sleepRepository.createSleepQualityData("2019/06/15", element.id)
   });
-  var userResult = sleepRepository.getQualitySleepers()
-  return userResult
+  const userResult = sleepRepository.getQualitySleepers()
 
   expect(userResult).to.deep.equal( { id: 2, averageQuality: 4.7 },
   { id: 3, averageQuality: 5.485714285714286 })
 });
 
+ it('should find the users who slept the most number of hours (one or more if they tied) on a given date'),
+ function() {
+   const heavySleepers = sleepRepository.findHeavySleepers("2019/06/15")
+
+   expect(heavySleepers).to.deep.equal({ userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 })
+ });
 });
