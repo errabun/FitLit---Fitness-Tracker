@@ -11,6 +11,11 @@ class Activity {
     return this.allStepData.filter(user => user.date === date);
   };
 
+  getActivityByDateAndId(id, date) {
+    const userActivity = this.userStepDataId(id);
+    return userActivity.find(day => day.date === date);
+  };
+  
   getUserActivityWeek(id, date, activeStat) {
     const userStepData = this.userStepDataId(id);
     const mapDates = userStepData.map(user => user.date);
@@ -23,18 +28,15 @@ class Activity {
   };
 
   avgActiveMinsWeek(id, date) {
-    const userWeekData = this.userActivityWeek(id, date);
-    const activeMinutes = userWeekData.reduce((total, currentDay) => {
-      total += currentDay.minutesActive;
+    const userWeekData = this.getUserActivityWeek(id, date, 'minutesActive');
+    const activeMinutes = Object.values(userWeekData)
+    const totalActiveMins = activeMinutes.reduce((total, cv) => {
+      total += cv;
       return total;
-    }, 0)
-    return Math.round(activeMinutes / 7);
+    }, 0 )
+    return Math.round(totalActiveMins / 7);
   }
 
-  getActivityByDateAndId(id, date) {
-    const userActivity = this.userStepDataId(id);
-    return userActivity.find(day => day.date === date);
-  };
 
   milesWalkedDay(user, date) {
     const userStepData = this.getActivityByDateAndId(user.id, date);
