@@ -7,7 +7,7 @@ const SleepRepository = require('../src/SleepRepository');
 const Sleep = require('../src/Sleep');
 
 describe('SleepRepository', function() {
-  let userData, sleepData, user, userRepo;
+  let userRepository, user, userData, sleepData;
 
 
   beforeEach(function() {
@@ -186,7 +186,9 @@ describe('SleepRepository', function() {
 
 userRepository = new UserRepository(userData);
 user = new User(userRepo.returnUserData(3));
-})
+sleepRepository = new SleepRepository(sleepData)
+
+});
 
   it('should be a function', function() {
     expect(SleepRepository).to.be.a('function');
@@ -196,4 +198,50 @@ user = new User(userRepo.returnUserData(3));
 
     expect(sleepRepository).to.be.an.instanceOf(SleepRepository);
   })
+
+  it('should store sleepData within a property', function() {
+
+    expect(sleepRepository.sleepData).to.deep.equal([
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/16",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/17",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      }
+      ]);
+  });
+
+it('should return the specified user sleepData',
+function() {
+
+  let data = returnUserSleepData(id)
+
+  expect(data).to.equal({
+    "id": 3,
+    "name": "Herminia Witting",
+    "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
+    "email": "Elwin.Tromp@yahoo.com",
+    "strideLength": 4.4,
+    "dailyStepGoal": 5000,
+    "friends": [
+      19,
+      11,
+      42,
+      33
+    ]
+  })
+})
+
 });
