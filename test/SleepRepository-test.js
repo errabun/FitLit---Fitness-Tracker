@@ -22,7 +22,8 @@ describe('SleepRepository', function() {
     "friends": [
       16,
       4,
-      8
+      8,
+      49
     ]
   },
   {
