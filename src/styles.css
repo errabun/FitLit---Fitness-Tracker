@@ -1,23 +1,14 @@
-/* * {
-  border: 1px solid red;
-} */
-html,
 body {
-  height: 100vh;
-  width: 100vw;
-}
-
-body {
-    background: black;
-    color: white;
-    font-family: Avenir;
-    font-size: 20px;
+  background: black;
+  color: white;
+  font-family: Avenir;
+  font-size: 20px;
+  width: 90vw;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  /* height: 20vh; */
   width: 70vw;
 }
 
@@ -25,7 +16,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* height: 95vh; */
   width: 90vw;
 }
 
@@ -45,38 +35,9 @@ article {
 .friends {
   display: flex;
   flex-direction: column;
-  /* margin-top: 250px; */
-  justify-content: space-around;
   align-items: center;
-  /* height: 400px;
-  width: 200px; */
 }
 
-
-/* .activity {
-  height: 30vh;
-  width: 30vw;
-  margin: 15px;
-} */
-
-/* .large-container {
-  height: 20vh;
-  width: 80vw;
-} */
-
-/* .active-display {
-  display: flex;
-  flex-direction: column;
-  height: 50px;
-  margin-top: 10px;
-  border: 1px solid red;
-} */
-
-/* .sleep-hydro-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
 /* HEADER */
 input[type="date"] {
   appearance: none;
@@ -109,8 +70,10 @@ input[type="date"] {
 /* ACTIVITY WIDGITS */
 .activity {
   display: flex;
+  align-items: center;
   justify-content: space-around;
 }
+
 .widgit-container {
   display: flex;
   flex-direction: row;
@@ -124,34 +87,58 @@ input[type="date"] {
 /* P TAGS */
 .step {
   color: #a7ff03;
+  background-color: rgb(54,54,54);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.activity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .active {
   color: #f67dff;
+  background-color: rgb(54,54,54);
+  radius: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .stair {
   color: #ff3333;
+  background-color: rgb(54,54,54);
+  radius: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .hydro {
   color: #47e7ff;
+  background-color: rgb(54,54,54);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .sleep {
   color: #fff04a;
+  background-color: rgb(54,54,54);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .qual-sleep {
   color: #FFA84A;
+  background-color: rgb(54,54,54);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* CHARTS */
 .activity-chart-section {
   display: flex;
   flex-direction: row;
-  /* height: 10vh;
-  width: 80vw; */
 }
 
 .chart-container {
@@ -188,7 +175,6 @@ input[type="date"] {
   }
 
   article {
-    /* height: 200px; */
     width: 95vw;
     display: flex;
     align-items: center;
@@ -204,7 +190,6 @@ input[type="date"] {
     margin-right: 10px;
   }
   .user-style {
-    /* margin-left: 67px; */
     margin-top: 20px;
     margin-left: 10px;
   }
