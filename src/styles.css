@@ -23,13 +23,14 @@ img {
   height: 110px;
   width: 100px;
   border: 10px solid;
-  border-radius: 100px;
+  border-radius: 100%;
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 article {
-  height: 200px;
-  width: 200px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .friends {
@@ -142,14 +143,14 @@ input[type="date"] {
 }
 
 .chart-container {
-  height: 200px;
+  /* height: 200px; */
   width: 400px;
   background-color: white;
   margin: 5px;
 }
 
 .chart-container-bottom {
-  height: 200px;
+  /* height: 200px; */
   width: 400px;
   background-color: white;
 }
