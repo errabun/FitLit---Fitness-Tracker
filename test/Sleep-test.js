@@ -1,13 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const UserRepository = require('../src/UserRepository');
-const User = require('../src/User')
-const SleepRepository = require('../src/SleepRepository');
-const Sleep = require('../src/Sleep');
+const UserRepository = require('../src/UserRepository.js');
+const User = require('../src/User.js')
+const SleepRepository = require('../src/SleepRepository.js');
+const Sleep = require('../src/Sleep.js');
 
 describe('Sleep', function() {
-  let user1, userRepository, userData, sleepRespository, sleep;
+  let user, userRepository, userData, sleepRespository, sleep, sleepData;
 
   beforeEach(function() {
     userData = [
@@ -184,13 +184,14 @@ describe('Sleep', function() {
   },
 ];
 
+userRepository = new UserRepository(userData);
+
 user = new User(userRepository.returnUserData(3));
 
 sleepRepository = new SleepRepository(sleepData);
 
 sleep = new Sleep(user, sleepRepository.returnUserSleepData(3))
 
-userRepository = new UserRepository(userData);
 })
 
 it('should be a function', function() {
