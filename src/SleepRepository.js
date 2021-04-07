@@ -1,7 +1,7 @@
 const userData = require('../data/users.js').userData;
 const sleepData = require('../data/sleep.js').sleepData;
-const userRepository = require('../src/UserRepository.js');
-const user = require('../src/User.js');
+const UserRepository = require('../src/UserRepository.js');
+const User = require('../src/User.js');
 
 const sleepQualityForUsers = [];
 

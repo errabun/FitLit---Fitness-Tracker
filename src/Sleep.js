@@ -1,3 +1,9 @@
+const userData = require('../data/users.js').userData;
+const sleepData = require('../data/sleep.js').sleepData;
+const UserRepository = require('../src/UserRepository.js');
+const User = require('../src/User.js');
+const SleepRepository = require('../src/SleepRepository.js');
+
 class Sleep {
   constructor(user, userSleepData){
     this.id = user.id;
@@ -6,10 +12,10 @@ class Sleep {
 
   calculateHoursSleptPerDay() {
     const hoursSlept = this.userSleepData.map(element => element.hoursSlept)
-    const totalHours = hoursSlept.reduce((sum, hours) => {
-      let total = (sum += hours)/hoursSlept.length;
-      return total
-    })
+    const totalHours = hoursSlept.reduce((sum, hour) => {
+      sum += hour
+      return sum
+    }, 0)/hoursSlept.length
     return totalHours
   }
 
@@ -55,4 +61,8 @@ class Sleep {
     }, 0) / totalSleep.length;
     return Math.round(100 * avgSleep) / 100;
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
 }

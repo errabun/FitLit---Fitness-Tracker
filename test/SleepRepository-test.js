@@ -1,13 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const UserRespository = require('../src/UserRepository');
-const User = require('../src/User');
-const SleepRepository = require('../src/SleepRepository');
+const UserRespository = require('../src/UserRepository.js');
+const User = require('../src/User.js');
+const SleepRepository = require('../src/SleepRepository.js');
 // const Sleep = require('../src/Sleep');
 
 describe('SleepRepository', function() {
-  let userRepository, user, userData, sleepData;
+  let userRepository, user1, userData, sleepData;
 
 
   beforeEach(function() {
@@ -185,9 +185,9 @@ describe('SleepRepository', function() {
   },
 ];
 
-user = new User(userRepositorys.returnUserData(3));
-sleepRepository = new SleepRepository(sleepData);
 userRepository = new UserRepository(userData);
+user1 = new User(userRepository.returnUserData(3));
+sleepRepository = new SleepRepository(sleepData);
 
 });
 
@@ -262,14 +262,14 @@ function() {
   });
   const userResult = sleepRepository.getQualitySleepers()
 
-  expect(userResult).to.deep.equal( { id: 2, averageQuality: 4.7 },
-  { id: 3, averageQuality: 5.485714285714286 })
+  expect(userResult).to.deep.equal( [{ id: 2, averageQuality: 4.7 },
+  { id: 3, averageQuality: 5.485714285714286 }])
 });
 
- it('should find the users who slept the most number of hours (one or more if they tied) on a given date'),
+ it('should find the users who slept the most number of hours (one or more if they tied) on a given date',
  function() {
    const heavySleepers = sleepRepository.findHeavySleepers("2019/06/15")
 
-   expect(heavySleepers).to.deep.equal({ userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 })
+   expect(heavySleepers).to.deep.equal([{ userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 }])
  });
 });
