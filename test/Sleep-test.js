@@ -224,5 +224,61 @@ it('should calculate average hours sleep per day for individual user', function(
   expect(sleepNum).to.equal(8.571428571428571);
 })
 
-it()
+it('should show the number of hours slept on a specified day', function() {
+
+  let hour = sleep.showHoursSleptByDate("2019/06/16")
+
+  expect(hour).to.equal(7);
+})
+
+it('should show sleep quality on a specified day', function() {
+
+  let quality = sleep.showSleepQualityByDate("2019/06/16")
+
+  expect(quality).to.equal(4.7);
+})
+
+it('should return an object of hours slept in specified week', function() {
+
+  let sleepWeek = sleep.showHoursSleptByWeek("2019/06/15")
+
+  expect(sleepWeek).to.deep.equal({
+  '2019/06/15': 5,
+  '2019/06/16': 7,
+  '2019/06/17': 8,
+  '2019/06/18': 10,
+  '2019/06/19': 10,
+  '2019/06/20': 10,
+  '2019/06/21': 10
+})
+})
+
+it('should return an object of sleep quality in specified week', function() {
+
+  let sleepQual = sleep.showSleepQualityByWeek("2019/06/15")
+
+  expect(sleepQual).to.deep.equal({
+  '2019/06/15': 4.7,
+  '2019/06/16': 4.7,
+  '2019/06/17': 5,
+  '2019/06/18': 6,
+  '2019/06/19': 6,
+  '2019/06/20': 6,
+  '2019/06/21': 6
+  })
+})
+
+it('should calculate all time sleep average for a user', function() {
+
+  let avgSleepHours = sleep.calcAllTimeSleepAvg('hoursSlept')
+
+  expect(avgSleepHours).to.equal(8.57);
+})
+
+it('should calculate all time sleep Quality for a user', function() {
+
+  let avgSleepQuality = sleep.calcAllTimeSleepAvg('sleepQuality')
+
+  expect(avgSleepQuality).to.equal(5.49);
+  })
 })
