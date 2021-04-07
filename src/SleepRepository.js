@@ -1,3 +1,8 @@
+const userData = require('../data/users.js').userData;
+const sleepData = require('../data/sleep.js').sleepData;
+const UserRepository = require('../src/UserRepository.js');
+const User = require('../src/User.js');
+
 const sleepQualityForUsers = [];
 
 class SleepRepository {
@@ -41,4 +46,8 @@ class SleepRepository {
     const heavySleepers = sleepHoursUser.filter(user => user.hoursSlept === sleepNum);
     return heavySleepers
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = SleepRepository;
 }
