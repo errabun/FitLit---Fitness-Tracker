@@ -7,11 +7,10 @@ const SleepRepository = require('../src/SleepRepository.js');
 // const Sleep = require('../src/Sleep');
 
 describe('SleepRepository', function() {
-  let userRepository, user, userData, sleepRepository, sleepData;
-
+  let userRepository, user, userData1, sleepRepository, sleepData;
 
   beforeEach(function() {
-    userData = [
+    userData1 = [
   {
     "id": 1,
     "name": "Luisa Hane",
@@ -186,13 +185,13 @@ describe('SleepRepository', function() {
 ];
 
 
-userRepository = new UserRepository(userData);
+    // userRepository = new UserRepository(userData1);
+    //
+    // user = new User(userRepository.returnuserData1(3));
 
-user = new User(userRepository.returnUserData(3));
+    sleepRepository = new SleepRepository(sleepData);
 
-sleepRepository = new SleepRepository(sleepData);
-
-});
+  });
 
   it('should be a function', function() {
     expect(SleepRepository).to.be.a('function');
@@ -223,56 +222,160 @@ sleepRepository = new SleepRepository(sleepData);
         "date": "2019/06/17",
         "hoursSlept": 6.1,
         "sleepQuality": 2.2
-      }
-      ]);
-  });
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/18",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/19",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/20",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+       {
+        "userID": 1,
+        "date": "2019/06/21",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+       {
+        "userID": 2,
+        "date": "2019/06/17",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/18",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/19",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/20",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/21",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "hoursSlept": 5,
+        "sleepQuality": 4.7
+      },
+       {
+        "userID": 3,
+        "date": "2019/06/16",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+       {
+        "userID": 3,
+        "date": "2019/06/17",
+        "hoursSlept": 8,
+        "sleepQuality": 5
+      },
+       {
+        "userID": 3,
+        "date": "2019/06/18",
+        "hoursSlept": 10,
+        "sleepQuality": 6
+      },
+       {
+        "userID": 3,
+        "date": "2019/06/19",
+        "hoursSlept": 10,
+        "sleepQuality": 6
+      },
+       {
+        "userID": 3,
+        "date": "2019/06/20",
+        "hoursSlept": 10,
+        "sleepQuality": 6
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/21",
+        "hoursSlept": 10,
+        "sleepQuality": 6
+      },
+    ]);
 
-it('should return the specified user sleepData',
-function() {
-
-  let data = sleepRepository.returnUserSleepData(id)
-
-  expect(data).to.equal({
-    "id": 3,
-    "name": "Herminia Witting",
-    "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
-    "email": "Elwin.Tromp@yahoo.com",
-    "strideLength": 4.4,
-    "dailyStepGoal": 5000,
-    "friends": [
-      19,
-      11,
-      42,
-      33
-    ]
   })
-})
 
-it('should return average sleep quality for all users',
-function() {
+  it('should return the specified user sleepData',
+  function() {
 
-let data = sleepRepository.returnAverageSleepQuality()
+    let data = sleepRepository.returnUserSleepData(3)
 
-expect(data).to.equal(4.128571428571429)
-})
+    expect(data).to.deep.equal([
+      { userID: 3, date: '2019/06/15', hoursSlept: 5, sleepQuality: 4.7 },
+      { userID: 3, date: '2019/06/16', hoursSlept: 7, sleepQuality: 4.7 },
+      { userID: 3, date: '2019/06/17', hoursSlept: 8, sleepQuality: 5 },
+      { userID: 3, date: '2019/06/18', hoursSlept: 10, sleepQuality: 6 },
+      { userID: 3, date: '2019/06/19', hoursSlept: 10, sleepQuality: 6 },
+      { userID: 3, date: '2019/06/20', hoursSlept: 10, sleepQuality: 6 },
+      { userID: 3, date: '2019/06/21', hoursSlept: 10, sleepQuality: 6 }
+    ])
+  })
 
-it('should find all users who average a sleep quality greater than 3 for a given week (7 days) ',
-function() {
-  let sleepQualityForUsers = [];
+  it('should return average sleep quality for all users',
+  function() {
 
-  userRepository.userData.forEach(element => {
-    sleepRepository.createSleepQualityData("2019/06/15", element.id)
+    let data = sleepRepository.returnAverageSleepQuality()
+
+    expect(data).to.equal(4.128571428571429)
+  })
+
+  it('should find all users who average a sleep quality greater than 3 for a given week (7 days) ',
+  function() {
+    let sleepQualityForUsers = [];
+
+    userData1.forEach(element => {
+      sleepRepository.createSleepQualityData("2019/06/21", element.id)
+    });
+    const userResult = sleepRepository.getQualitySleepers()
+
+    expect(userResult).to.deep.equal( [{ id: 2, averageQuality: 4.7 },
+    { id: 3, averageQuality: 5.485714285714286 }])
   });
-  const userResult = sleepRepository.getQualitySleepers()
 
-  expect(userResult).to.deep.equal( [{ id: 2, averageQuality: 4.7 },
-  { id: 3, averageQuality: 5.485714285714286 }])
-});
+  it('should find the users who slept the most number of hours (one or more if they tied) on a given date',
+   function() {
+    const heavySleepers = sleepRepository.findHeavySleepers("2019/06/15")
 
- it('should find the users who slept the most number of hours (one or more if they tied) on a given date',
- function() {
-   const heavySleepers = sleepRepository.findHeavySleepers("2019/06/15")
-
-   expect(heavySleepers).to.deep.equal([{ userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 }])
- });
+    expect(heavySleepers).to.deep.equal([{ userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 }])
+  });
 });
