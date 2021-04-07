@@ -241,7 +241,7 @@ it('should show sleep quality on a specified day', function() {
 
 it('should return an object of hours slept in specified week', function() {
 
-  let sleepWeek = sleep.showHoursSleptByWeek("2019/06/15")
+  let sleepWeek = sleep.showHoursSleptByWeek("2019/06/21")
 
   expect(sleepWeek).to.deep.equal({
   '2019/06/15': 5,
@@ -256,7 +256,7 @@ it('should return an object of hours slept in specified week', function() {
 
 it('should return an object of sleep quality in specified week', function() {
 
-  let sleepQual = sleep.showSleepQualityByWeek("2019/06/15")
+  let sleepQual = sleep.showSleepQualityByWeek("2019/06/21")
 
   expect(sleepQual).to.deep.equal({
   '2019/06/15': 4.7,
