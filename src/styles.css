@@ -28,9 +28,9 @@ img {
 }
 
 article {
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .friends {
@@ -42,16 +42,16 @@ align-items: center;
 /* HEADER */
 input[type="date"] {
   appearance: none;
-    -webkit-appearance: none;
-    color: black;
-    font-family: "Helvetica", arial, sans-serif;
-    font-size: 18px;
-    border: 1px solid;
-    border-color: #e3e3e3;
-    border-radius: 50px;
-    background: #e3e3e3;
-    padding:5px;
-    height: 50px;
+  -webkit-appearance: none;
+  color: black;
+  font-family: "Helvetica", arial, sans-serif;
+  font-size: 18px;
+  border: 1px solid;
+  border-color: #e3e3e3;
+  border-radius: 50px;
+  background: #e3e3e3;
+  padding:5px;
+  height: 50px;
 }
 
 .user-style {
@@ -97,12 +97,12 @@ input[type="date"] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .active {
   color: #f67dff;
   background-color: rgb(54,54,54);
-  radius: 10px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -110,7 +110,6 @@ input[type="date"] {
 .stair {
   color: #ff3333;
   background-color: rgb(54,54,54);
-  radius: 10px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -142,20 +141,14 @@ input[type="date"] {
   flex-direction: row;
 }
 
-.chart-container {
-  /* height: 200px; */
+.chart-container,
+.chart-container-bottom {
   width: 400px;
   background-color: white;
   margin: 5px;
 }
 
-.chart-container-bottom {
-  /* height: 200px; */
-  width: 400px;
-  background-color: white;
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
 
   img {
     height: 80px;
@@ -217,18 +210,12 @@ input[type="date"] {
     width: 50vw;
   }
 
-  .chart-container {
-    height: auto;
-    width: 95vw;
-  }
-
+  .chart-container,
   .chart-container-bottom {
-    height: auto;
     width: 95vw;
   }
 
   .graph {
     margin-top: 10px;
   }
-
 }
