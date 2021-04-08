@@ -1,5 +1,3 @@
-const userData = require('../data/users').userData;
-
 class UserRepository {
   constructor(userData) {
     this.userData = userData;

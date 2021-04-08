@@ -1,5 +1,3 @@
-const userRepository = require('../src/UserRepository');
-
 class User {
   constructor(userData) {
     this.id = userData.id;

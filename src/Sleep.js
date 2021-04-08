@@ -1,9 +1,3 @@
-const userData = require('../data/users.js').userData;
-const sleepData = require('../data/sleep.js').sleepData;
-const UserRepository = require('../src/UserRepository.js');
-const User = require('../src/User.js');
-const SleepRepository = require('../src/SleepRepository.js');
-
 class Sleep {
   constructor(user, userSleepData){
     this.id = user.id;
